@@ -499,16 +499,26 @@
     .site-footer {
       background: #101618;
       color: rgba(255, 255, 255, 0.78);
-      padding: 26px 0;
+      padding: 28px 0;
       border-top: 1px solid rgba(255, 255, 255, 0.10);
     }
 
     .footer-simple {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .footer-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px 36px;
+      gap: 36px;
       align-items: center;
-      font-size: 14px;
+    }
+
+    .footer-item {
+      min-width: 0;
     }
 
     .footer-simple strong {
@@ -608,7 +618,7 @@
         padding: 68px 0;
       }
 
-      .footer-simple {
+      .footer-row {
         grid-template-columns: 1fr;
         gap: 8px;
       }
@@ -825,25 +835,31 @@
 
   <footer class="site-footer" id="contact">
     <div class="container footer-simple">
-      <div>
-        <strong>© Artbroker International 2026</strong>
-      </div>
-      <div>
-        <strong>Artbroker International</strong>
-      </div>
-
-      <div>
-        <span>Email:</span> info@artbroker-int.nl
-      </div>
-      <div>
-        <span>Tel:</span> +31 (0)411 68 40 49
+      <div class="footer-row">
+        <div class="footer-item">
+          <strong>© Artbroker International 2026</strong>
+        </div>
+        <div class="footer-item">
+          <strong>Artbroker International</strong>
+        </div>
       </div>
 
-      <div>
-        <span>KvK 's-Hertogenbosch:</span> 16061175
+      <div class="footer-row">
+        <div class="footer-item">
+          <span>Email:</span> info@artbroker-int.nl
+        </div>
+        <div class="footer-item">
+          <span>Tel:</span> +31 (0)411 68 40 49
+        </div>
       </div>
-      <div>
-        <span>BTW nr:</span> NL001744433B14
+
+      <div class="footer-row">
+        <div class="footer-item">
+          <span>KvK 's-Hertogenbosch:</span> 16061175
+        </div>
+        <div class="footer-item">
+          <span>BTW nr:</span> NL001744433B14
+        </div>
       </div>
     </div>
   </footer>
