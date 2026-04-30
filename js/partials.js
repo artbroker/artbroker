@@ -21,7 +21,23 @@ async function loadPartials() {
   );
 
   initMobileMenu();
+  setActiveNavLink();
   document.dispatchEvent(new CustomEvent('partialsLoaded'));
+}
+
+
+function setActiveNavLink() {
+  const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+  const links = document.querySelectorAll('.nav-links a');
+
+  links.forEach((link) => {
+    const linkFile = new URL(link.getAttribute('href'), window.location.href).pathname.split('/').pop() || 'index.html';
+
+    if (linkFile === currentFile) {
+      link.classList.add('is-active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
 }
 
 function initMobileMenu() {

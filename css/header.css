@@ -62,6 +62,15 @@
   width: 100%;
 }
 
+.nav-links a.is-active {
+  color: var(--gold-dark);
+  font-weight: 700;
+}
+
+.nav-links a.is-active::after {
+  width: 100%;
+}
+
 .header-emblems {
   display: flex;
   align-items: center;

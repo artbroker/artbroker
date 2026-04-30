@@ -12,6 +12,10 @@
   margin-bottom: 44px;
 }
 
+.about-intro .eyebrow {
+  color: var(--gold);
+}
+
 .about-intro h1 {
   font-family: var(--serif);
   font-size: clamp(42px, 5vw, 66px);
@@ -63,6 +67,7 @@
   border: 1px solid rgba(31, 37, 40, 0.11);
   background: #fffdf8;
   box-shadow: 0 16px 45px rgba(17, 23, 25, 0.10);
+  cursor: zoom-in;
 }
 
 .media-card img {
@@ -96,6 +101,59 @@
 
 .media-carousel-btn.next {
   right: -20px;
+}
+
+
+.media-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(10, 12, 13, 0.84);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.media-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.media-lightbox-image {
+  max-width: min(1120px, 96vw);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.45);
+  background: #fffdf8;
+}
+
+.media-lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 1001;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(181, 138, 66, 0.38);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.24);
+}
+
+body.is-lightbox-open {
+  overflow: hidden;
 }
 
 @media (max-width: 680px) {
