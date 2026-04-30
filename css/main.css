@@ -255,7 +255,7 @@
   text-align: center;
   max-width: 740px;
   margin-inline: auto;
-  margin-bottom: 38px;
+  margin-bottom: 24px;
 }
 
 .carousel-wrap {
@@ -319,8 +319,8 @@
 .carousel-btn.next { right: -18px; }
 
 .artists {
-  padding-top: 76px;
-  padding-bottom: 88px;
+  padding-top: 38px;
+  padding-bottom: 44px;
 }
 
 @media (max-width: 680px) {
@@ -394,6 +394,15 @@
 
   .section {
     padding: 68px 0;
+  }
+
+  .artists {
+    padding-top: 38px;
+    padding-bottom: 44px;
+  }
+
+  .center-heading {
+    margin-bottom: 24px;
   }
 
   .carousel-btn {
