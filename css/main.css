@@ -308,3 +308,133 @@
     display: none;
   }
 }
+
+
+.hero-mobile-controls {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .hero {
+    min-height: 520px;
+    align-items: center;
+  }
+
+  .hero-bg span {
+    background-position: center center;
+    background-size: cover;
+    transform: scale(1.01);
+  }
+
+  .hero::after {
+    background: linear-gradient(
+      90deg,
+      rgba(6, 9, 10, 0.58) 0%,
+      rgba(6, 9, 10, 0.47) 52%,
+      rgba(6, 9, 10, 0.38) 100%
+    );
+  }
+
+  .hero-shell {
+    position: relative;
+    padding: 50px 42px 44px;
+    overflow: hidden;
+  }
+
+  .hero-layout {
+    display: flex;
+    gap: 0;
+    min-height: 390px;
+    align-items: center;
+    transition: transform 0.42s ease;
+    will-change: transform;
+  }
+
+  .hero.is-mobile-slide-2 .hero-layout {
+    transform: translateX(-100%);
+  }
+
+  .hero-main,
+  .hero-side {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 100%;
+    justify-self: auto;
+    padding: 0 6px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 10.5vw, 48px);
+    line-height: 1;
+  }
+
+  .hero p,
+  .hero-side .lead {
+    font-size: 15.5px;
+    line-height: 1.55;
+    max-width: 100%;
+  }
+
+  .hero-side .section-title {
+    font-size: clamp(31px, 8.7vw, 42px);
+    line-height: 1.05;
+  }
+
+  .hero-actions {
+    margin-top: 26px;
+  }
+
+  .hero-side .btn {
+    margin-top: 24px;
+  }
+
+  .hero-mobile-controls {
+    display: block;
+  }
+
+  .hero-slide-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    width: 36px;
+    height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 999px;
+    background: rgba(17, 23, 25, 0.34);
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateY(-50%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+  }
+
+  .hero-slide-prev {
+    left: 10px;
+  }
+
+  .hero-slide-next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero {
+    min-height: 500px;
+  }
+
+  .hero-shell {
+    padding-inline: 38px;
+  }
+
+  .hero-layout {
+    min-height: 370px;
+  }
+
+  .hero-slide-btn {
+    width: 32px;
+    height: 42px;
+    font-size: 26px;
+  }
+}
