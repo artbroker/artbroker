@@ -383,7 +383,7 @@
     .carousel {
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: minmax(260px, 1fr);
+      grid-auto-columns: 140px;
       gap: 22px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -395,28 +395,28 @@
       display: none;
     }
 
-    .gallery-card,
     .artist-card {
       scroll-snap-align: start;
+      text-align: center;
     }
 
-    .gallery-card {
+    .artist-card img {
+      width: 118px;
+      height: 118px;
+      margin-inline: auto;
       border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 16px 44px rgba(17, 23, 25, 0.11);
-      background: #fff;
-    }
-
-    .gallery-card img {
-      height: 230px;
-      width: 100%;
       object-fit: cover;
+      box-shadow: 0 12px 28px rgba(17, 23, 25, 0.12);
+      border: 1px solid rgba(31, 37, 40, 0.1);
+      background: #eee4d4;
     }
 
-    .gallery-card figcaption {
-      padding: 17px 18px;
-      color: var(--muted);
-      font-size: 14px;
+    .artist-card span {
+      display: block;
+      margin-top: 12px;
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.15;
     }
 
     .carousel-btn {
@@ -443,57 +443,9 @@
       right: -18px;
     }
 
-    .dots {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 6px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(31, 37, 40, 0.22);
-    }
-
-    .dot.active {
-      width: 22px;
-      background: var(--gold);
-    }
-
     .artists {
       padding-top: 76px;
       padding-bottom: 88px;
-    }
-
-    .artist-carousel {
-      grid-auto-columns: 140px;
-      justify-content: start;
-      padding-inline: 2px;
-    }
-
-    .artist-card {
-      text-align: center;
-    }
-
-    .artist-card img {
-      width: 118px;
-      height: 118px;
-      margin-inline: auto;
-      border-radius: 18px;
-      object-fit: cover;
-      box-shadow: 0 12px 28px rgba(17, 23, 25, 0.12);
-      border: 1px solid rgba(31, 37, 40, 0.1);
-      background: #eee4d4;
-    }
-
-    .artist-card span {
-      display: block;
-      margin-top: 12px;
-      font-family: var(--serif);
-      font-size: 16px;
-      line-height: 1.15;
     }
 
     .site-footer {
@@ -640,7 +592,6 @@
         <a href="#kunstenaars">Kunstenaars</a>
         <a href="#diensten">Diensten</a>
         <a href="#over">Over ons</a>
-        <a href="#galerie">Galerie</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -716,51 +667,6 @@
             <span>jaar expertise in kunst</span>
           </figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="section" id="galerie">
-      <div class="container">
-        <div class="center-heading">
-          <div class="eyebrow">Bezoek onze galerie</div>
-          <h2 class="section-title">Een kijkje in onze galerie</h2>
-          <p class="lead" style="margin-inline:auto">Ontdek de sfeer, collectie en presentatie van The Gallery. Ideaal voor bezoekers die vooraf vertrouwen willen voelen.</p>
-        </div>
-
-        <div class="carousel-wrap">
-          <button class="carousel-btn prev" data-carousel="gallery" data-dir="-1">‹</button>
-
-          <div class="carousel" id="gallery-carousel">
-            <figure class="gallery-card">
-              <img src="https://www.artbroker-int.nl/img/Artbroker-galery.jpg" alt="Interieur van de galerie" />
-              <figcaption>Salonachtige galeriepresentatie met moderne kunst en objecten.</figcaption>
-            </figure>
-
-            <figure class="gallery-card">
-              <img src="https://www.artbroker-int.nl/img/20240322_135901.jpg" alt="Galerie met kunstwerken" />
-              <figcaption>Ruim aanbod van schilderijen, zeefdrukken en verzamelobjecten.</figcaption>
-            </figure>
-
-            <figure class="gallery-card">
-              <img src="https://www.artbroker-int.nl/img/Intro-5.jpg" alt="Kunst in de galerie" />
-              <figcaption>Een warme omgeving voor advies, aankoop en taxatie.</figcaption>
-            </figure>
-
-            <figure class="gallery-card">
-              <img src="https://www.artbroker-int.nl/img/Oude%20Gallery%20Facade%20800.png" alt="Buitenzijde van de galerie" />
-              <figcaption>The Gallery in Boxtel, bezoek mogelijk op afspraak.</figcaption>
-            </figure>
-          </div>
-
-          <button class="carousel-btn next" data-carousel="gallery" data-dir="1">›</button>
-        </div>
-
-        <div class="dots" aria-hidden="true">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
       </div>
     </section>
 
@@ -848,7 +754,6 @@
 
   <script>
     const carouselIds = {
-      gallery: "gallery-carousel",
       artists: "artists-carousel"
     };
 
