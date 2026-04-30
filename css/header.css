@@ -19,8 +19,15 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
   min-width: 245px;
+}
+
+.brand-logo {
+  display: block;
+  height: 54px;
+  width: auto;
+  max-width: 245px;
+  object-fit: contain;
 }
 
 .brand-mark {
@@ -201,6 +208,11 @@
 @media (max-width: 680px) {
   .brand {
     min-width: auto;
+  }
+
+  .brand-logo {
+    height: 48px;
+    max-width: 210px;
   }
 
   .brand-title {

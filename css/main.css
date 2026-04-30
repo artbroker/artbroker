@@ -56,7 +56,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 88px 0 76px;
+  padding: 88px clamp(42px, 5vw, 90px) 76px;
 }
 
 .hero-layout {
@@ -233,7 +233,7 @@
   }
 
   .hero-shell {
-    padding: 64px 0 46px;
+    padding: 64px 18px 46px;
   }
 
   .hero h1 {
