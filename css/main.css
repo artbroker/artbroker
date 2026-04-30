@@ -61,7 +61,7 @@
   background-repeat: no-repeat;
   opacity: 0;
   transform: scale(1.02);
-  animation: heroImageFade 8s infinite;
+  animation: heroImageFade 16s infinite;
   will-change: opacity;
 }
 
@@ -70,24 +70,21 @@
 }
 
 .hero-bg span:nth-child(2) {
-  animation-delay: 2s;
-}
-
-.hero-bg span:nth-child(3) {
   animation-delay: 4s;
 }
 
+.hero-bg span:nth-child(3) {
+  animation-delay: 8s;
+}
+
 .hero-bg span:nth-child(4) {
-  animation-delay: 6s;
+  animation-delay: 12s;
 }
 
 .hero::after {
   content: "";
   z-index: 1;
-  background:
-    linear-gradient(90deg, rgba(6, 9, 10, 0.90) 0%, rgba(6, 9, 10, 0.78) 38%, rgba(6, 9, 10, 0.66) 70%, rgba(6, 9, 10, 0.58) 100%),
-    radial-gradient(circle at 22% 50%, rgba(0, 0, 0, 0.18), transparent 42%),
-    radial-gradient(circle at 78% 50%, rgba(0, 0, 0, 0.14), transparent 38%);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -117,12 +114,14 @@
 .hero-main {
   max-width: 640px;
   color: #fff;
+  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.72);
 }
 
 .hero-side {
   max-width: 560px;
   justify-self: end;
   color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 3px 24px rgba(0, 0, 0, 0.72);
 }
 
 .eyebrow {
@@ -177,6 +176,11 @@
 
 .hero-side .btn {
   margin-top: 30px;
+  text-shadow: none;
+}
+
+.hero-actions .btn {
+  text-shadow: none;
 }
 
 .section {
