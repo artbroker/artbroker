@@ -497,48 +497,27 @@
     }
 
     .site-footer {
-      background:
-        radial-gradient(circle at top left, rgba(181, 138, 66, 0.13), transparent 35%),
-        #101618;
+      background: #101618;
       color: rgba(255, 255, 255, 0.78);
-      padding: 70px 0 24px;
+      padding: 26px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
     }
 
-    .footer-grid {
+    .footer-simple {
       display: grid;
-      grid-template-columns: 1.25fr 0.8fr 0.8fr 1.1fr;
-      gap: 44px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-    }
-
-    .footer-brand {
-      color: #fff;
-      margin-bottom: 18px;
-    }
-
-    .footer-col h4 {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 12px;
-      margin-bottom: 18px;
-    }
-
-    .footer-col li {
-      list-style: none;
-      margin-bottom: 9px;
-      color: rgba(255, 255, 255, 0.7);
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 36px;
+      align-items: center;
       font-size: 14px;
     }
 
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding-top: 22px;
-      color: rgba(255, 255, 255, 0.48);
-      font-size: 13px;
+    .footer-simple strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .footer-simple span {
+      color: rgba(255, 255, 255, 0.68);
     }
 
     .menu-toggle {
@@ -587,8 +566,7 @@
         display: block;
       }
 
-      .intro-grid,
-      .footer-grid {
+      .intro-grid {
         grid-template-columns: 1fr;
       }
 
@@ -630,9 +608,9 @@
         padding: 68px 0;
       }
 
-      .footer-bottom {
-        align-items: flex-start;
-        flex-direction: column;
+      .footer-simple {
+        grid-template-columns: 1fr;
+        gap: 8px;
       }
 
       .carousel-btn {
@@ -846,56 +824,26 @@
   </main>
 
   <footer class="site-footer" id="contact">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="brand footer-brand">
-            <span class="brand-mark">AB</span>
-            <span>
-              <span class="brand-title">Artbroker</span>
-              <span class="brand-subtitle">International</span>
-            </span>
-          </div>
-
-          <p>Dé kunstspecialist sinds 1989. Gespecialiseerd in moderne en hedendaagse kunst en officieel vertegenwoordiger van Herman Brood.</p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Navigatie</h4>
-          <ul>
-            <li>Collectie</li>
-            <li>Kunstenaars</li>
-            <li>Diensten</li>
-            <li>Over ons</li>
-            <li>Contact</li>
-          </ul>
-        </div>
-
-        <div class="footer-col" id="diensten">
-          <h4>Diensten</h4>
-          <ul>
-            <li>Taxaties</li>
-            <li>Aankoop & verkoop</li>
-            <li>Bemiddeling</li>
-            <li>Inlijsten</li>
-            <li>Kunstadvies</li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Bezoek onze galerie</h4>
-          <ul>
-            <li>Industriweg 4f<br />5281 RW Boxtel, Nederland</li>
-            <li>+31 (0)411 68 40 49</li>
-            <li>info@artbroker-int.nl</li>
-            <li>Di - Za · 11:00 - 17:00 uur<br />Zondag en maandag gesloten</li>
-          </ul>
-        </div>
+    <div class="container footer-simple">
+      <div>
+        <strong>© Artbroker International 2026</strong>
+      </div>
+      <div>
+        <strong>Artbroker International</strong>
       </div>
 
-      <div class="footer-bottom">
-        <span>© 2026 Artbroker International · Alle rechten voorbehouden</span>
-        <span>Algemene voorwaarden · Privacyverklaring · Sitemap</span>
+      <div>
+        <span>Email:</span> info@artbroker-int.nl
+      </div>
+      <div>
+        <span>Tel:</span> +31 (0)411 68 40 49
+      </div>
+
+      <div>
+        <span>KvK 's-Hertogenbosch:</span> 16061175
+      </div>
+      <div>
+        <span>BTW nr:</span> NL001744433B14
       </div>
     </div>
   </footer>
