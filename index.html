@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artbroker International - Homepage Concept</title>
+
   <style>
     :root {
       --bg: #f7f3ea;
@@ -81,8 +82,9 @@
       height: 54px;
       border: 1px solid rgba(181, 138, 66, 0.45);
       border-radius: 50%;
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: var(--serif);
       font-size: 28px;
       letter-spacing: -0.08em;
@@ -91,6 +93,7 @@
     }
 
     .brand-title {
+      display: block;
       font-family: var(--serif);
       font-size: 24px;
       letter-spacing: 0.06em;
@@ -99,6 +102,7 @@
     }
 
     .brand-subtitle {
+      display: block;
       margin-top: 5px;
       font-size: 10px;
       letter-spacing: 0.52em;
@@ -170,7 +174,7 @@
 
     .hero {
       position: relative;
-      min-height: 690px;
+      min-height: calc(100vh - 82px);
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -182,7 +186,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(6, 9, 10, 0.86) 0%, rgba(6, 9, 10, 0.56) 38%, rgba(6, 9, 10, 0.14) 100%),
+        linear-gradient(90deg, rgba(6, 9, 10, 0.90) 0%, rgba(6, 9, 10, 0.65) 40%, rgba(6, 9, 10, 0.22) 100%),
         url("https://www.artbroker-int.nl/img/Artbroker-galery.jpg") center/cover;
       transform: scale(1.02);
     }
@@ -190,9 +194,9 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      width: min(720px, 100%);
+      width: min(860px, 100%);
       color: white;
-      padding: 95px 0;
+      padding: 86px 0 72px;
     }
 
     .eyebrow {
@@ -207,7 +211,7 @@
     .hero h1 {
       font-family: var(--serif);
       font-weight: 400;
-      font-size: clamp(54px, 7vw, 92px);
+      font-size: clamp(48px, 6.5vw, 86px);
       line-height: 0.96;
       letter-spacing: -0.045em;
       max-width: 650px;
@@ -224,67 +228,70 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 36px;
+      margin-top: 34px;
     }
 
-    .trust-strip {
-      background: var(--bg-soft);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .badges {
+    .hero-badges {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 960px;
+      margin-top: 42px;
     }
 
-    .badge {
-      min-height: 164px;
+    .hero-badge {
       display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 22px;
+      grid-template-columns: 64px 1fr;
+      gap: 14px;
       align-items: center;
-      padding: 34px 28px;
-      border-right: 1px solid var(--line);
+      min-height: 118px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 250, 241, 0.10);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
     }
 
-    .badge:last-child {
-      border-right: 0;
-    }
-
-    .badge-icon {
-      height: 86px;
-      width: 86px;
-      border: 1px solid rgba(181, 138, 66, 0.5);
+    .hero-badge-icon {
+      width: 62px;
+      height: 62px;
+      border: 1px solid rgba(181, 138, 66, 0.75);
       border-radius: 50%;
       display: grid;
       place-items: center;
-      color: var(--gold-dark);
+      color: #f1d7a1;
       font-family: var(--serif);
       text-align: center;
-      line-height: 1.05;
-      background: #fffdf9;
+      line-height: 1.02;
+      background: rgba(255, 250, 241, 0.08);
     }
 
-    .badge-icon svg {
-      width: 48px;
-      height: 48px;
+    .hero-badge-icon strong {
+      font-size: 18px;
+    }
+
+    .hero-badge-icon svg {
+      width: 34px;
+      height: 34px;
       stroke: currentColor;
-      stroke-width: 1.4;
+      stroke-width: 1.5;
       fill: none;
     }
 
-    .badge h3 {
+    .hero-badge h3 {
       font-family: var(--serif);
       font-weight: 400;
       line-height: 1.1;
-      font-size: 22px;
-      margin-bottom: 8px;
+      font-size: 19px;
+      color: #fffaf1;
+      margin-bottom: 6px;
     }
 
-    .badge p {
-      color: var(--muted);
-      font-size: 14px;
+    .hero-badge p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
       line-height: 1.45;
     }
 
@@ -587,6 +594,13 @@
       cursor: pointer;
     }
 
+    @media (max-width: 1080px) {
+      .hero-badges {
+        grid-template-columns: 1fr;
+        max-width: 620px;
+      }
+    }
+
     @media (max-width: 980px) {
       .nav-links,
       .nav > .btn {
@@ -597,15 +611,9 @@
         display: block;
       }
 
-      .badges,
       .intro-grid,
       .footer-grid {
         grid-template-columns: 1fr;
-      }
-
-      .badge {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
       }
 
       .intro-grid {
@@ -618,6 +626,10 @@
         width: min(100% - 28px, 1180px);
       }
 
+      .brand {
+        min-width: auto;
+      }
+
       .brand-title {
         font-size: 19px;
       }
@@ -627,17 +639,21 @@
       }
 
       .hero {
-        min-height: 620px;
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 64px 0 46px;
       }
 
       .hero h1 {
-        font-size: 50px;
+        font-size: 48px;
       }
 
-      .badge {
+      .hero-badge {
         grid-template-columns: 1fr;
-        text-align: center;
         justify-items: center;
+        text-align: center;
       }
 
       .section {
@@ -656,11 +672,12 @@
     }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="brand" aria-label="Artbroker International">
-        <span class="brand-mark">A<span>B</span></span>
+        <span class="brand-mark">AB</span>
         <span>
           <span class="brand-title">Artbroker</span>
           <span class="brand-subtitle">International</span>
@@ -687,40 +704,47 @@
         <div class="eyebrow">Moderne & hedendaagse kunst</div>
         <h1>Vertrouwde kunstspecialist sinds 1989</h1>
         <p>Gespecialiseerd in moderne kunst, popart en het officiële werk van Herman Brood. Deskundig, persoonlijk en betrouwbaar.</p>
+
         <div class="hero-actions">
           <a class="btn btn-gold" href="#collectie">Bekijk collectie →</a>
           <a class="btn btn-ghost" href="#contact">Plan een bezoek</a>
         </div>
-      </div>
-    </section>
 
-    <section class="trust-strip" aria-label="Artbroker emblemen">
-      <div class="container badges">
-        <article class="badge">
-          <div class="badge-icon"><span>Sinds<br><strong>1989</strong></span></div>
-          <div>
-            <h3>Sinds 1989</h3>
-            <p>Al meer dan drie decennia vertrouwd door verzamelaars, kunstliefhebbers en bedrijven.</p>
-          </div>
-        </article>
+        <div class="hero-badges" aria-label="Artbroker emblemen">
+          <article class="hero-badge">
+            <div class="hero-badge-icon">
+              <span>Sinds<br><strong>1989</strong></span>
+            </div>
+            <div>
+              <h3>Sinds 1989</h3>
+              <p>Al meer dan drie decennia vertrouwd door verzamelaars, kunstliefhebbers en bedrijven.</p>
+            </div>
+          </article>
 
-        <article class="badge">
-          <div class="badge-icon" aria-hidden="true">
-            <svg viewBox="0 0 64 64"><circle cx="28" cy="27" r="15"/><path d="M39 39l13 13"/><path d="M21 25c2-5 9-7 14-3"/></svg>
-          </div>
-          <div>
-            <h3>Taxateur & Kunstspecialist</h3>
-            <p>Deskundige taxaties en persoonlijk advies met integriteit, ervaring en zorg.</p>
-          </div>
-        </article>
+          <article class="hero-badge">
+            <div class="hero-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <circle cx="28" cy="27" r="15"/>
+                <path d="M39 39l13 13"/>
+                <path d="M21 25c2-5 9-7 14-3"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Taxateur & Kunstspecialist</h3>
+              <p>Deskundige taxaties en persoonlijk advies met integriteit, ervaring en zorg.</p>
+            </div>
+          </article>
 
-        <article class="badge">
-          <div class="badge-icon"><span style="font-family:cursive;font-size:22px">Herman<br>Brood</span></div>
-          <div>
-            <h3>Official Agent of Herman Brood</h3>
-            <p>Officieel vertegenwoordiger van het werk en de nalatenschap van Herman Brood.</p>
-          </div>
-        </article>
+          <article class="hero-badge">
+            <div class="hero-badge-icon">
+              <span style="font-family:cursive;font-size:18px">Herman<br>Brood</span>
+            </div>
+            <div>
+              <h3>Official Agent of Herman Brood</h3>
+              <p>Officieel vertegenwoordiger van het werk en de nalatenschap van Herman Brood.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -734,6 +758,7 @@
           <br />
           <a class="btn btn-gold" href="#diensten">Meer over ons →</a>
         </div>
+
         <figure class="intro-card">
           <img src="https://www.artbroker-int.nl/img/Oude%20Gallery%20Facade%20800.png" alt="Galerie Artbroker International" />
           <figcaption class="intro-stat">
@@ -754,27 +779,38 @@
 
         <div class="carousel-wrap">
           <button class="carousel-btn prev" data-carousel="gallery" data-dir="-1">‹</button>
+
           <div class="carousel" id="gallery-carousel">
             <figure class="gallery-card">
               <img src="https://www.artbroker-int.nl/img/Artbroker-galery.jpg" alt="Interieur van de galerie" />
               <figcaption>Salonachtige galeriepresentatie met moderne kunst en objecten.</figcaption>
             </figure>
+
             <figure class="gallery-card">
               <img src="https://www.artbroker-int.nl/img/20240322_135901.jpg" alt="Galerie met kunstwerken" />
               <figcaption>Ruim aanbod van schilderijen, zeefdrukken en verzamelobjecten.</figcaption>
             </figure>
+
             <figure class="gallery-card">
               <img src="https://www.artbroker-int.nl/img/Intro-5.jpg" alt="Kunst in de galerie" />
               <figcaption>Een warme omgeving voor advies, aankoop en taxatie.</figcaption>
             </figure>
+
             <figure class="gallery-card">
               <img src="https://www.artbroker-int.nl/img/Oude%20Gallery%20Facade%20800.png" alt="Buitenzijde van de galerie" />
               <figcaption>The Gallery in Boxtel, bezoek mogelijk op afspraak.</figcaption>
             </figure>
           </div>
+
           <button class="carousel-btn next" data-carousel="gallery" data-dir="1">›</button>
         </div>
-        <div class="dots" aria-hidden="true"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+        <div class="dots" aria-hidden="true">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
       </div>
     </section>
 
@@ -785,11 +821,13 @@
             <div class="eyebrow">Uitgelicht</div>
             <h2 class="section-title">Geselecteerde werken</h2>
           </div>
+
           <a class="btn" style="border-color:rgba(181,138,66,.55);color:var(--gold-dark);" href="#">Bekijk volledige collectie</a>
         </div>
 
         <div class="carousel-wrap">
           <button class="carousel-btn prev" data-carousel="art" data-dir="-1">‹</button>
+
           <div class="carousel" id="art-carousel">
             <article class="art-card">
               <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80" alt="Kleurrijk modern kunstwerk" />
@@ -799,6 +837,7 @@
                 <span class="price">Prijs op aanvraag</span>
               </div>
             </article>
+
             <article class="art-card">
               <img src="https://images.unsplash.com/photo-1545989253-02cc26577f88?auto=format&fit=crop&w=800&q=80" alt="Portretkunst" />
               <div class="art-card-content">
@@ -807,6 +846,7 @@
                 <span class="price">Prijs op aanvraag</span>
               </div>
             </article>
+
             <article class="art-card">
               <img src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?auto=format&fit=crop&w=800&q=80" alt="Popart werk" />
               <div class="art-card-content">
@@ -815,6 +855,7 @@
                 <span class="price">Prijs op aanvraag</span>
               </div>
             </article>
+
             <article class="art-card">
               <img src="https://images.unsplash.com/photo-1574182245530-967d9b3831af?auto=format&fit=crop&w=800&q=80" alt="Grafisch kunstwerk" />
               <div class="art-card-content">
@@ -824,9 +865,16 @@
               </div>
             </article>
           </div>
+
           <button class="carousel-btn next" data-carousel="art" data-dir="1">›</button>
         </div>
-        <div class="dots" aria-hidden="true"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+        <div class="dots" aria-hidden="true">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
       </div>
     </section>
 
@@ -839,17 +887,54 @@
 
         <div class="carousel-wrap">
           <button class="carousel-btn prev" data-carousel="artists" data-dir="-1">‹</button>
+
           <div class="carousel artist-carousel" id="artists-carousel">
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=500&q=80" alt="Herman Brood"><span>Herman Brood</span></a>
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1577720580479-7d839d829c73?auto=format&fit=crop&w=500&q=80" alt="Hans Jochem Bakker"><span>Hans Jochem Bakker</span></a>
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=500&q=80" alt="Corneille"><span>Corneille</span></a>
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=500&q=80" alt="Karel Appel"><span>Karel Appel</span></a>
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=500&q=80" alt="Banksy"><span>Banksy</span></a>
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&w=500&q=80" alt="Picasso"><span>Picasso</span></a>
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=500&q=80" alt="Andy Warhol"><span>Andy Warhol</span></a>
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?auto=format&fit=crop&w=500&q=80" alt="LJB"><span>LJB</span></a>
-            <a class="artist-card" href="#"><img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=500&q=80" alt="Salvador Dalí"><span>Salvador Dalí</span></a>
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=500&q=80" alt="Herman Brood">
+              <span>Herman Brood</span>
+            </a>
+
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1577720580479-7d839d829c73?auto=format&fit=crop&w=500&q=80" alt="Hans Jochem Bakker">
+              <span>Hans Jochem Bakker</span>
+            </a>
+
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=500&q=80" alt="Corneille">
+              <span>Corneille</span>
+            </a>
+
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=500&q=80" alt="Karel Appel">
+              <span>Karel Appel</span>
+            </a>
+
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=500&q=80" alt="Banksy">
+              <span>Banksy</span>
+            </a>
+
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?auto=format&fit=crop&w=500&q=80" alt="Picasso">
+              <span>Picasso</span>
+            </a>
+
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=500&q=80" alt="Andy Warhol">
+              <span>Andy Warhol</span>
+            </a>
+
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?auto=format&fit=crop&w=500&q=80" alt="LJB">
+              <span>LJB</span>
+            </a>
+
+            <a class="artist-card" href="#">
+              <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=500&q=80" alt="Salvador Dalí">
+              <span>Salvador Dalí</span>
+            </a>
           </div>
+
           <button class="carousel-btn next" data-carousel="artists" data-dir="1">›</button>
         </div>
       </div>
@@ -861,14 +946,16 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="brand footer-brand">
-            <span class="brand-mark">A<span>B</span></span>
+            <span class="brand-mark">AB</span>
             <span>
               <span class="brand-title">Artbroker</span>
               <span class="brand-subtitle">International</span>
             </span>
           </div>
+
           <p>Dé kunstspecialist sinds 1989. Gespecialiseerd in moderne en hedendaagse kunst en officieel vertegenwoordiger van Herman Brood.</p>
         </div>
+
         <div class="footer-col">
           <h4>Navigatie</h4>
           <ul>
@@ -879,6 +966,7 @@
             <li>Contact</li>
           </ul>
         </div>
+
         <div class="footer-col" id="diensten">
           <h4>Diensten</h4>
           <ul>
@@ -889,6 +977,7 @@
             <li>Kunstadvies</li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4>Bezoek onze galerie</h4>
           <ul>
@@ -899,6 +988,7 @@
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
         <span>© 2026 Artbroker International · Alle rechten voorbehouden</span>
         <span>Algemene voorwaarden · Privacyverklaring · Sitemap</span>
