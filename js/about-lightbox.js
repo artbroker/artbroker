@@ -1,22 +1,20 @@
+
 function initMediaLightbox() {
   const lightbox = document.getElementById('media-lightbox');
+  const image = lightbox ? lightbox.querySelector('.media-lightbox-image') : null;
+  const closeButtons = lightbox ? lightbox.querySelectorAll('[data-lightbox-close]') : [];
 
-  if (!lightbox || lightbox.dataset.ready === 'true') {
+  if (!lightbox || !image || lightbox.dataset.ready === 'true') {
     return;
   }
 
   lightbox.dataset.ready = 'true';
-
-  const image = lightbox.querySelector('.media-lightbox-image');
-  const closeButtons = lightbox.querySelectorAll('[data-lightbox-close]');
   let lastActiveElement = null;
 
   function openLightbox(src, alt) {
-    if (!src || !image) return;
-
     lastActiveElement = document.activeElement;
     image.src = src;
-    image.alt = alt || 'Vergroot krantenartikel';
+    image.alt = alt || '';
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-lightbox-open');
@@ -36,17 +34,11 @@ function initMediaLightbox() {
   document.addEventListener('click', (event) => {
     const card = event.target.closest('.media-card[data-lightbox-src]');
 
-    if (!card) return;
-
-    const carousel = card.closest('[data-drag-scroll]');
-
-    if (carousel && carousel.dataset.justDragged === 'true') {
+    if (!card) {
       return;
     }
 
     event.preventDefault();
-    event.stopPropagation();
-
     openLightbox(card.dataset.lightboxSrc, card.dataset.lightboxAlt || card.getAttribute('aria-label'));
   });
 
