@@ -1,0 +1,18 @@
+.contact-page {
+  min-height: calc(100vh - 94px - 92px);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 96px 0;
+}
+
+.contact-page-shell {
+  width: min(980px, 100%);
+  margin-inline: auto;
+}
+
+@media (max-width: 980px) {
+  .contact-page {
+    min-height: calc(100vh - 82px - 150px);
+    padding: 68px 0;
+  }
+}
