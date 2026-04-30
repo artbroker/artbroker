@@ -1,8 +1,8 @@
 .site-footer {
-  background: #101618;
-  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 250, 241, 0.94);
+  color: var(--ink);
   padding: 28px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 1px solid var(--line);
 }
 
 .footer-simple {
@@ -21,13 +21,13 @@
 }
 
 .footer-simple strong {
-  color: #fff;
+  color: var(--ink);
   font-weight: 600;
 }
 
 .footer-simple span {
-  color: var(--gold);
-  font-weight: 600;
+  color: var(--gold-dark);
+  font-weight: 700;
 }
 
 @media (max-width: 680px) {
