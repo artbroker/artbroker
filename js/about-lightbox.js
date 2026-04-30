@@ -9,6 +9,9 @@ function initMediaLightbox() {
 
   const image = lightbox.querySelector('.media-lightbox-image');
   const closeButton = lightbox.querySelector('.media-lightbox-close');
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let pointerMoved = false;
 
   function openLightbox(src, alt) {
     if (!src) return;
@@ -31,25 +34,55 @@ function initMediaLightbox() {
     image.removeAttribute('src');
   }
 
-  document.addEventListener('click', (event) => {
-    const link = event.target.closest('[data-lightbox-image]');
+  document.addEventListener('pointerdown', (event) => {
+    const card = event.target.closest('[data-lightbox-image]');
 
-    if (!link) {
-      return;
+    if (!card) return;
+
+    pointerStartX = event.clientX;
+    pointerStartY = event.clientY;
+    pointerMoved = false;
+  }, true);
+
+  document.addEventListener('pointermove', (event) => {
+    const card = event.target.closest('[data-lightbox-image]');
+
+    if (!card) return;
+
+    const deltaX = Math.abs(event.clientX - pointerStartX);
+    const deltaY = Math.abs(event.clientY - pointerStartY);
+
+    if (deltaX > 10 || deltaY > 10) {
+      pointerMoved = true;
     }
+  }, true);
 
-    if (link.dataset.dragged === 'true') {
-      event.preventDefault();
-      link.dataset.dragged = 'false';
+  document.addEventListener('click', (event) => {
+    const card = event.target.closest('[data-lightbox-image]');
+
+    if (!card) {
       return;
     }
 
     event.preventDefault();
-    const img = link.querySelector('img');
-    openLightbox(link.getAttribute('href'), img ? img.alt : link.getAttribute('aria-label'));
-  });
+    event.stopPropagation();
 
-  closeButton.addEventListener('click', closeLightbox);
+    if (pointerMoved || card.dataset.dragged === 'true') {
+      card.dataset.dragged = 'false';
+      pointerMoved = false;
+      return;
+    }
+
+    const img = card.querySelector('img');
+    const src = card.dataset.lightboxSrc || card.getAttribute('href') || (img ? img.src : '');
+    const alt = img ? img.alt : card.getAttribute('aria-label');
+
+    openLightbox(src, alt);
+  }, true);
+
+  if (closeButton) {
+    closeButton.addEventListener('click', closeLightbox);
+  }
 
   lightbox.addEventListener('click', (event) => {
     if (event.target === lightbox) {

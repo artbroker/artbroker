@@ -61,13 +61,22 @@
 .media-card {
   scroll-snap-align: start;
   display: block;
+  appearance: none;
+  width: 100%;
   min-height: 430px;
+  padding: 0;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(31, 37, 40, 0.11);
   background: #fffdf8;
   box-shadow: 0 16px 45px rgba(17, 23, 25, 0.10);
   cursor: zoom-in;
+  font: inherit;
+}
+
+.media-card:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
 }
 
 .media-card img {
