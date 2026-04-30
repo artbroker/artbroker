@@ -387,7 +387,6 @@
     }
 
     .gallery-card,
-    .art-card,
     .artist-card {
       scroll-snap-align: start;
     }
@@ -452,59 +451,6 @@
     .dot.active {
       width: 22px;
       background: var(--gold);
-    }
-
-    .featured {
-      background: #fffaf1;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-head-row {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 30px;
-    }
-
-    .art-card {
-      background: #fffdf8;
-      border: 1px solid rgba(31, 37, 40, 0.13);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 15px 38px rgba(17, 23, 25, 0.08);
-    }
-
-    .art-card img {
-      height: 260px;
-      width: 100%;
-      object-fit: cover;
-      background: #eee4d4;
-    }
-
-    .art-card-content {
-      padding: 18px;
-    }
-
-    .art-card h3 {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 1.14;
-    }
-
-    .art-card p {
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .price {
-      display: block;
-      margin-top: 14px;
-      color: var(--gold-dark);
-      font-weight: 800;
     }
 
     .artists {
@@ -660,7 +606,6 @@
         padding: 68px 0;
       }
 
-      .section-head-row,
       .footer-bottom {
         align-items: flex-start;
         flex-direction: column;
@@ -685,7 +630,7 @@
       </a>
 
       <nav class="nav-links" aria-label="Hoofdnavigatie">
-        <a href="#collectie">Collectie</a>
+        <a href="#">Collectie</a>
         <a href="#kunstenaars">Kunstenaars</a>
         <a href="#diensten">Diensten</a>
         <a href="#over">Over ons</a>
@@ -706,7 +651,7 @@
         <p>Gespecialiseerd in moderne kunst, popart en het officiële werk van Herman Brood. Deskundig, persoonlijk en betrouwbaar.</p>
 
         <div class="hero-actions">
-          <a class="btn btn-gold" href="#collectie">Bekijk collectie →</a>
+          <a class="btn btn-gold" href="#">Bekijk collectie →</a>
           <a class="btn btn-ghost" href="#contact">Plan een bezoek</a>
         </div>
 
@@ -803,70 +748,6 @@
           </div>
 
           <button class="carousel-btn next" data-carousel="gallery" data-dir="1">›</button>
-        </div>
-
-        <div class="dots" aria-hidden="true">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section featured" id="collectie">
-      <div class="container">
-        <div class="section-head-row">
-          <div>
-            <div class="eyebrow">Uitgelicht</div>
-            <h2 class="section-title">Geselecteerde werken</h2>
-          </div>
-
-          <a class="btn" style="border-color:rgba(181,138,66,.55);color:var(--gold-dark);" href="#">Bekijk volledige collectie</a>
-        </div>
-
-        <div class="carousel-wrap">
-          <button class="carousel-btn prev" data-carousel="art" data-dir="-1">‹</button>
-
-          <div class="carousel" id="art-carousel">
-            <article class="art-card">
-              <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80" alt="Kleurrijk modern kunstwerk" />
-              <div class="art-card-content">
-                <h3>Composition No. 7</h3>
-                <p>Herman Brood · Acryl op doek</p>
-                <span class="price">Prijs op aanvraag</span>
-              </div>
-            </article>
-
-            <article class="art-card">
-              <img src="https://images.unsplash.com/photo-1545989253-02cc26577f88?auto=format&fit=crop&w=800&q=80" alt="Portretkunst" />
-              <div class="art-card-content">
-                <h3>Man met Hoed</h3>
-                <p>Karel Appel · Zeefdruk op papier</p>
-                <span class="price">Prijs op aanvraag</span>
-              </div>
-            </article>
-
-            <article class="art-card">
-              <img src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?auto=format&fit=crop&w=800&q=80" alt="Popart werk" />
-              <div class="art-card-content">
-                <h3>Pop Series</h3>
-                <p>Andy Warhol · Zeefdruk</p>
-                <span class="price">Prijs op aanvraag</span>
-              </div>
-            </article>
-
-            <article class="art-card">
-              <img src="https://images.unsplash.com/photo-1574182245530-967d9b3831af?auto=format&fit=crop&w=800&q=80" alt="Grafisch kunstwerk" />
-              <div class="art-card-content">
-                <h3>Blue Study</h3>
-                <p>Picasso · Litho</p>
-                <span class="price">Prijs op aanvraag</span>
-              </div>
-            </article>
-          </div>
-
-          <button class="carousel-btn next" data-carousel="art" data-dir="1">›</button>
         </div>
 
         <div class="dots" aria-hidden="true">
@@ -999,7 +880,6 @@
   <script>
     const carouselIds = {
       gallery: "gallery-carousel",
-      art: "art-carousel",
       artists: "artists-carousel"
     };
 
