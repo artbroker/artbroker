@@ -109,6 +109,15 @@
     </section>
   </main>
 
+
+  <form name="contact" method="POST" action="/contact.html" data-netlify="true" netlify-honeypot="bot-field" hidden class="netlify-form-detection">
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="bot-field" />
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+  </form>
+
   <div data-partial="./partials/footer.html"></div>
 
   <script src="./js/partials.js" defer></script>

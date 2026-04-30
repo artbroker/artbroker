@@ -18,8 +18,12 @@ function initContactForm() {
 
     const formData = new FormData(form);
 
+    if (!formData.get('form-name')) {
+      formData.set('form-name', form.getAttribute('name') || 'contact');
+    }
+
     try {
-      const response = await fetch('/', {
+      const response = await fetch(form.getAttribute('action') || window.location.pathname, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encodeFormData(formData)
