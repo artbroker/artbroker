@@ -84,7 +84,12 @@
 .hero::after {
   content: "";
   z-index: 1;
-  background: transparent;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 9, 10, 0.62) 0%,
+    rgba(6, 9, 10, 0.52) 44%,
+    rgba(6, 9, 10, 0.40) 100%
+  );
   pointer-events: none;
 }
 
