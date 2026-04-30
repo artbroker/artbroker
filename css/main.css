@@ -100,27 +100,54 @@
 }
 
 .hero-layout {
-  display: flex;
-  align-items: center;
+  position: relative;
+  display: block;
   min-height: calc(100vh - 94px - 164px);
-  transition: transform 0.48s ease;
-  will-change: transform;
-}
-
-.hero.is-slide-2 .hero-layout {
-  transform: translateX(-100%);
 }
 
 .hero-main,
 .hero-side {
-  flex: 0 0 100%;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  min-width: 100%;
   max-width: 100%;
   padding: 0 clamp(12px, 3vw, 54px);
   color: #fff;
   text-align: center;
   text-shadow: 0 3px 24px rgba(0, 0, 0, 0.72);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.36s ease, transform 0.36s ease, visibility 0s linear 0.36s;
+}
+
+.hero-main {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.hero.is-slide-2 .hero-main {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.36s ease, transform 0.36s ease, visibility 0s linear 0.36s;
+}
+
+.hero.is-slide-2 .hero-side {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 
 .hero-main > *,
