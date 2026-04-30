@@ -108,9 +108,10 @@
   position: fixed;
   inset: 0;
   z-index: 1000;
-  display: grid;
-  place-items: center;
-  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
   background: rgba(10, 12, 13, 0.84);
   opacity: 0;
   visibility: hidden;
@@ -125,11 +126,13 @@
 }
 
 .media-lightbox-image {
-  max-width: min(1120px, 96vw);
-  max-height: 90vh;
+  display: block;
   width: auto;
   height: auto;
+  max-width: min(1120px, calc(100vw - 64px));
+  max-height: calc(100vh - 96px);
   object-fit: contain;
+  object-position: center;
   border-radius: 16px;
   box-shadow: 0 26px 90px rgba(0, 0, 0, 0.45);
   background: #fffdf8;
@@ -188,5 +191,22 @@ body.is-lightbox-open {
 
   .media-carousel-btn {
     display: none;
+  }
+
+  .media-lightbox {
+    padding: 16px;
+  }
+
+  .media-lightbox-image {
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 84px);
+    border-radius: 12px;
+  }
+
+  .media-lightbox-close {
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
   }
 }

@@ -11,31 +11,42 @@ function initMediaLightbox() {
   const closeButton = lightbox.querySelector('.media-lightbox-close');
 
   function openLightbox(src, alt) {
+    if (!src) return;
+
     image.src = src;
     image.alt = alt || 'Vergroot krantenartikel';
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-lightbox-open');
-    closeButton.focus({ preventScroll: true });
+
+    if (closeButton) {
+      closeButton.focus({ preventScroll: true });
+    }
   }
 
   function closeLightbox() {
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('is-lightbox-open');
-    image.src = '';
+    image.removeAttribute('src');
   }
 
-  document.querySelectorAll('[data-lightbox-image]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      if (event.defaultPrevented) {
-        return;
-      }
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('[data-lightbox-image]');
 
+    if (!link) {
+      return;
+    }
+
+    if (link.dataset.dragged === 'true') {
       event.preventDefault();
-      const img = link.querySelector('img');
-      openLightbox(link.href, img ? img.alt : link.getAttribute('aria-label'));
-    });
+      link.dataset.dragged = 'false';
+      return;
+    }
+
+    event.preventDefault();
+    const img = link.querySelector('img');
+    openLightbox(link.getAttribute('href'), img ? img.alt : link.getAttribute('aria-label'));
   });
 
   closeButton.addEventListener('click', closeLightbox);

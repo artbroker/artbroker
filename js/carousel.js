@@ -66,10 +66,12 @@ function setupDragScroll(carousel) {
   let startX = 0;
   let scrollLeft = 0;
   let moved = false;
+  let activeLink = null;
 
   carousel.addEventListener('pointerdown', (event) => {
     isDown = true;
     moved = false;
+    activeLink = event.target.closest('[data-lightbox-image]');
     startX = event.clientX;
     scrollLeft = carousel.scrollLeft;
     carousel.setPointerCapture(event.pointerId);
@@ -80,8 +82,9 @@ function setupDragScroll(carousel) {
 
     const delta = event.clientX - startX;
 
-    if (Math.abs(delta) > 5) {
+    if (Math.abs(delta) > 12) {
       moved = true;
+      if (activeLink) activeLink.dataset.dragged = 'true';
     }
 
     carousel.scrollLeft = scrollLeft - delta;
@@ -94,18 +97,17 @@ function setupDragScroll(carousel) {
     if (carousel.hasPointerCapture(event.pointerId)) {
       carousel.releasePointerCapture(event.pointerId);
     }
+
+    window.setTimeout(() => {
+      if (activeLink) activeLink.dataset.dragged = 'false';
+      activeLink = null;
+      moved = false;
+    }, 0);
   }
 
   carousel.addEventListener('pointerup', endDrag);
   carousel.addEventListener('pointercancel', endDrag);
   carousel.addEventListener('mouseleave', () => { isDown = false; });
-
-  carousel.addEventListener('click', (event) => {
-    if (moved) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  }, true);
 }
 
 function initCarousels() {
