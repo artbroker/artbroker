@@ -370,8 +370,9 @@
   }
 
   .hero-side .section-title {
-    font-size: clamp(31px, 8.7vw, 42px);
-    line-height: 1.05;
+    font-size: clamp(25px, 6.8vw, 32px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
   }
 
   .hero-actions {
@@ -401,9 +402,9 @@
 }
 
 @media (max-width: 430px) {
-  .hero { min-height: 500px; }
+  .hero { min-height: 520px; }
   .hero-shell { padding-inline: 38px; }
-  .hero-layout { min-height: 370px; }
+  .hero-layout { min-height: 390px; }
   .hero-slide-btn {
     width: 32px;
     height: 42px;
