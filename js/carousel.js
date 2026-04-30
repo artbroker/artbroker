@@ -1,5 +1,6 @@
 const carouselIds = {
-  artists: 'artists-carousel'
+  artists: 'artists-carousel',
+  media: 'media-carousel'
 };
 
 function setupInfiniteCarousel(carousel) {
@@ -46,27 +47,75 @@ function setupInfiniteCarousel(carousel) {
 
   const wrapper = carousel.closest('.carousel-wrap') || carousel;
 
-  wrapper.addEventListener('mouseenter', () => {
-    paused = true;
-  });
-
-  wrapper.addEventListener('mouseleave', () => {
-    paused = false;
-  });
-
-  wrapper.addEventListener('focusin', () => {
-    paused = true;
-  });
-
-  wrapper.addEventListener('focusout', () => {
-    paused = false;
-  });
+  wrapper.addEventListener('mouseenter', () => { paused = true; });
+  wrapper.addEventListener('mouseleave', () => { paused = false; });
+  wrapper.addEventListener('focusin', () => { paused = true; });
+  wrapper.addEventListener('focusout', () => { paused = false; });
 
   tick();
 }
 
+function setupDragScroll(carousel) {
+  if (!carousel || carousel.dataset.dragReady === 'true') {
+    return;
+  }
+
+  carousel.dataset.dragReady = 'true';
+
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+  let moved = false;
+
+  carousel.addEventListener('pointerdown', (event) => {
+    isDown = true;
+    moved = false;
+    startX = event.clientX;
+    scrollLeft = carousel.scrollLeft;
+    carousel.setPointerCapture(event.pointerId);
+  });
+
+  carousel.addEventListener('pointermove', (event) => {
+    if (!isDown) return;
+
+    const delta = event.clientX - startX;
+
+    if (Math.abs(delta) > 5) {
+      moved = true;
+    }
+
+    carousel.scrollLeft = scrollLeft - delta;
+  });
+
+  function endDrag(event) {
+    if (!isDown) return;
+    isDown = false;
+
+    if (carousel.hasPointerCapture(event.pointerId)) {
+      carousel.releasePointerCapture(event.pointerId);
+    }
+  }
+
+  carousel.addEventListener('pointerup', endDrag);
+  carousel.addEventListener('pointercancel', endDrag);
+  carousel.addEventListener('mouseleave', () => { isDown = false; });
+
+  carousel.addEventListener('click', (event) => {
+    if (moved) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }, true);
+}
+
 function initCarousels() {
   document.querySelectorAll('[data-carousel]').forEach((button) => {
+    if (button.dataset.carouselReady === 'true') {
+      return;
+    }
+
+    button.dataset.carouselReady = 'true';
+
     button.addEventListener('click', () => {
       const carousel = document.getElementById(carouselIds[button.dataset.carousel]);
 
@@ -84,9 +133,9 @@ function initCarousels() {
     });
   });
 
-  Object.values(carouselIds).forEach((id) => {
-    setupInfiniteCarousel(document.getElementById(id));
-  });
+  setupInfiniteCarousel(document.getElementById('artists-carousel'));
+
+  document.querySelectorAll('[data-drag-scroll="true"]').forEach(setupDragScroll);
 }
 
 window.addEventListener('DOMContentLoaded', initCarousels);

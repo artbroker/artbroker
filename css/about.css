@@ -1,0 +1,134 @@
+.about-page {
+  background: var(--bg);
+  min-height: calc(100vh - 94px);
+}
+
+.about-shell {
+  padding: 88px 0 78px;
+}
+
+.about-intro {
+  max-width: 780px;
+  margin-bottom: 44px;
+}
+
+.about-intro h1 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 5vw, 66px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+
+.about-intro p {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+  max-width: 760px;
+}
+
+.media-carousel-wrap {
+  position: relative;
+}
+
+.media-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 360px);
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 8px 3px 18px;
+  cursor: grab;
+  user-select: none;
+}
+
+.media-carousel:active {
+  cursor: grabbing;
+}
+
+.media-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.media-card {
+  scroll-snap-align: start;
+  display: block;
+  min-height: 430px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(31, 37, 40, 0.11);
+  background: #fffdf8;
+  box-shadow: 0 16px 45px rgba(17, 23, 25, 0.10);
+}
+
+.media-card img {
+  width: 100%;
+  height: 430px;
+  object-fit: contain;
+  object-position: center;
+  background: #f1eadf;
+  pointer-events: none;
+}
+
+.media-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(181, 138, 66, 0.32);
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  box-shadow: 0 14px 35px rgba(181, 138, 66, 0.22);
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.media-carousel-btn.prev {
+  left: -20px;
+}
+
+.media-carousel-btn.next {
+  right: -20px;
+}
+
+@media (max-width: 680px) {
+  .about-shell {
+    padding: 56px 0 52px;
+  }
+
+  .about-intro {
+    margin-bottom: 30px;
+  }
+
+  .about-intro h1 {
+    font-size: 42px;
+  }
+
+  .about-intro p {
+    font-size: 16px;
+  }
+
+  .media-carousel {
+    grid-auto-columns: minmax(240px, 82vw);
+    gap: 18px;
+  }
+
+  .media-card {
+    min-height: 360px;
+  }
+
+  .media-card img {
+    height: 360px;
+  }
+
+  .media-carousel-btn {
+    display: none;
+  }
+}
