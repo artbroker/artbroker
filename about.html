@@ -26,27 +26,27 @@
         <button class="media-carousel-btn prev" data-carousel="media" data-dir="-1" type="button" aria-label="Vorige media artikel">‹</button>
 
         <div class="media-carousel" id="media-carousel" data-drag-scroll="true" aria-label="Berichten uit de media carousel">
-          <button class="media-card" data-lightbox-image data-lightbox-src="https://Artbroker.b-cdn.net/krantenartikelen/ar50.jpg" type="button" aria-label="Vergroot Persbericht Artbroker International">
+          <a class="media-card" href="#media-1" data-lightbox-image aria-label="Vergroot Persbericht Artbroker International">
             <img src="https://Artbroker.b-cdn.net/krantenartikelen/ar50.jpg" alt="Persbericht Artbroker International" draggable="false" />
-          </button>
-          <button class="media-card" data-lightbox-image data-lightbox-src="https://Artbroker.b-cdn.net/krantenartikelen/pers-lemmer-com.jpg" type="button" aria-label="Vergroot Persartikel Lemmer">
+          </a>
+          <a class="media-card" href="#media-2" data-lightbox-image aria-label="Vergroot Persartikel Lemmer">
             <img src="https://Artbroker.b-cdn.net/krantenartikelen/pers-lemmer-com.jpg" alt="Persartikel Lemmer" draggable="false" />
-          </button>
-          <button class="media-card" data-lightbox-image data-lightbox-src="https://Artbroker.b-cdn.net/krantenartikelen/pers-lovesick-com.jpg" type="button" aria-label="Vergroot Persartikel Lovesick">
+          </a>
+          <a class="media-card" href="#media-3" data-lightbox-image aria-label="Vergroot Persartikel Lovesick">
             <img src="https://Artbroker.b-cdn.net/krantenartikelen/pers-lovesick-com.jpg" alt="Persartikel Lovesick" draggable="false" />
-          </button>
-          <button class="media-card" data-lightbox-image data-lightbox-src="https://Artbroker.b-cdn.net/krantenartikelen/pers-nieuwe-revue-com.jpg" type="button" aria-label="Vergroot Persartikel Nieuwe Revue">
+          </a>
+          <a class="media-card" href="#media-4" data-lightbox-image aria-label="Vergroot Persartikel Nieuwe Revue">
             <img src="https://Artbroker.b-cdn.net/krantenartikelen/pers-nieuwe-revue-com.jpg" alt="Persartikel Nieuwe Revue" draggable="false" />
-          </button>
-          <button class="media-card" data-lightbox-image data-lightbox-src="https://Artbroker.b-cdn.net/krantenartikelen/pers-treble-br_dgbl-com.jpg" type="button" aria-label="Vergroot Persartikel Treble">
+          </a>
+          <a class="media-card" href="#media-5" data-lightbox-image aria-label="Vergroot Persartikel Treble">
             <img src="https://Artbroker.b-cdn.net/krantenartikelen/pers-treble-br_dgbl-com.jpg" alt="Persartikel Treble" draggable="false" />
-          </button>
-          <button class="media-card" data-lightbox-image data-lightbox-src="https://Artbroker.b-cdn.net/krantenartikelen/scannen0002.jpg" type="button" aria-label="Vergroot Krantenartikel scan 0002">
+          </a>
+          <a class="media-card" href="#media-6" data-lightbox-image aria-label="Vergroot Krantenartikel scan 0002">
             <img src="https://Artbroker.b-cdn.net/krantenartikelen/scannen0002.jpg" alt="Krantenartikel scan 0002" draggable="false" />
-          </button>
-          <button class="media-card" data-lightbox-image data-lightbox-src="https://Artbroker.b-cdn.net/krantenartikelen/scannen0003.jpg" type="button" aria-label="Vergroot Krantenartikel scan 0003">
+          </a>
+          <a class="media-card" href="#media-7" data-lightbox-image aria-label="Vergroot Krantenartikel scan 0003">
             <img src="https://Artbroker.b-cdn.net/krantenartikelen/scannen0003.jpg" alt="Krantenartikel scan 0003" draggable="false" />
-          </button>
+          </a>
         </div>
 
         <button class="media-carousel-btn next" data-carousel="media" data-dir="1" type="button" aria-label="Volgende media artikel">›</button>
@@ -54,15 +54,59 @@
     </section>
   </main>
 
-  <div class="media-lightbox" id="media-lightbox" aria-hidden="true" role="dialog" aria-label="Vergroot krantenartikel">
-    <button class="media-lightbox-close" type="button" aria-label="Sluiten">×</button>
-    <img class="media-lightbox-image" src="" alt="Vergroot krantenartikel" />
+  <div class="media-target-lightbox" id="media-1" aria-label="Vergroot krantenartikel">
+    <a class="media-target-backdrop" href="#media-carousel" aria-label="Sluiten"></a>
+    <div class="media-target-frame">
+      <a class="media-target-close" href="#media-carousel" aria-label="Sluiten">×</a>
+      <img src="https://Artbroker.b-cdn.net/krantenartikelen/ar50.jpg" alt="Persbericht Artbroker International" />
+    </div>
+  </div>
+  <div class="media-target-lightbox" id="media-2" aria-label="Vergroot krantenartikel">
+    <a class="media-target-backdrop" href="#media-carousel" aria-label="Sluiten"></a>
+    <div class="media-target-frame">
+      <a class="media-target-close" href="#media-carousel" aria-label="Sluiten">×</a>
+      <img src="https://Artbroker.b-cdn.net/krantenartikelen/pers-lemmer-com.jpg" alt="Persartikel Lemmer" />
+    </div>
+  </div>
+  <div class="media-target-lightbox" id="media-3" aria-label="Vergroot krantenartikel">
+    <a class="media-target-backdrop" href="#media-carousel" aria-label="Sluiten"></a>
+    <div class="media-target-frame">
+      <a class="media-target-close" href="#media-carousel" aria-label="Sluiten">×</a>
+      <img src="https://Artbroker.b-cdn.net/krantenartikelen/pers-lovesick-com.jpg" alt="Persartikel Lovesick" />
+    </div>
+  </div>
+  <div class="media-target-lightbox" id="media-4" aria-label="Vergroot krantenartikel">
+    <a class="media-target-backdrop" href="#media-carousel" aria-label="Sluiten"></a>
+    <div class="media-target-frame">
+      <a class="media-target-close" href="#media-carousel" aria-label="Sluiten">×</a>
+      <img src="https://Artbroker.b-cdn.net/krantenartikelen/pers-nieuwe-revue-com.jpg" alt="Persartikel Nieuwe Revue" />
+    </div>
+  </div>
+  <div class="media-target-lightbox" id="media-5" aria-label="Vergroot krantenartikel">
+    <a class="media-target-backdrop" href="#media-carousel" aria-label="Sluiten"></a>
+    <div class="media-target-frame">
+      <a class="media-target-close" href="#media-carousel" aria-label="Sluiten">×</a>
+      <img src="https://Artbroker.b-cdn.net/krantenartikelen/pers-treble-br_dgbl-com.jpg" alt="Persartikel Treble" />
+    </div>
+  </div>
+  <div class="media-target-lightbox" id="media-6" aria-label="Vergroot krantenartikel">
+    <a class="media-target-backdrop" href="#media-carousel" aria-label="Sluiten"></a>
+    <div class="media-target-frame">
+      <a class="media-target-close" href="#media-carousel" aria-label="Sluiten">×</a>
+      <img src="https://Artbroker.b-cdn.net/krantenartikelen/scannen0002.jpg" alt="Krantenartikel scan 0002" />
+    </div>
+  </div>
+  <div class="media-target-lightbox" id="media-7" aria-label="Vergroot krantenartikel">
+    <a class="media-target-backdrop" href="#media-carousel" aria-label="Sluiten"></a>
+    <div class="media-target-frame">
+      <a class="media-target-close" href="#media-carousel" aria-label="Sluiten">×</a>
+      <img src="https://Artbroker.b-cdn.net/krantenartikelen/scannen0003.jpg" alt="Krantenartikel scan 0003" />
+    </div>
   </div>
 
   <div data-partial="./partials/footer.html"></div>
 
   <script src="./js/partials.js" defer></script>
   <script src="./js/carousel.js" defer></script>
-  <script src="./js/about-lightbox.js" defer></script>
 </body>
 </html>

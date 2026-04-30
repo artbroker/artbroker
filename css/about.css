@@ -25,14 +25,6 @@
   color: var(--ink);
 }
 
-.about-intro p {
-  margin-top: 22px;
-  color: var(--muted);
-  font-size: 18px;
-  line-height: 1.65;
-  max-width: 760px;
-}
-
 .media-carousel-wrap {
   position: relative;
 }
@@ -61,17 +53,14 @@
 .media-card {
   scroll-snap-align: start;
   display: block;
-  appearance: none;
   width: 100%;
   min-height: 430px;
-  padding: 0;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(31, 37, 40, 0.11);
   background: #fffdf8;
   box-shadow: 0 16px 45px rgba(17, 23, 25, 0.10);
   cursor: zoom-in;
-  font: inherit;
 }
 
 .media-card:focus-visible {
@@ -112,8 +101,7 @@
   right: -20px;
 }
 
-
-.media-lightbox {
+.media-target-lightbox {
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -121,20 +109,34 @@
   align-items: center;
   justify-content: center;
   padding: 32px;
-  background: rgba(10, 12, 13, 0.84);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.22s ease, visibility 0.22s ease;
 }
 
-.media-lightbox.is-open {
+.media-target-lightbox:target {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-.media-lightbox-image {
+.media-target-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 13, 0.84);
+}
+
+.media-target-frame {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: min(1120px, calc(100vw - 64px));
+  max-height: calc(100vh - 96px);
+}
+
+.media-target-frame img {
   display: block;
   width: auto;
   height: auto;
@@ -147,7 +149,7 @@
   background: #fffdf8;
 }
 
-.media-lightbox-close {
+.media-target-close {
   position: fixed;
   top: 18px;
   right: 20px;
@@ -159,13 +161,10 @@
   background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   color: #fff;
   font-size: 30px;
-  line-height: 1;
+  line-height: 42px;
+  text-align: center;
   cursor: pointer;
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.24);
-}
-
-body.is-lightbox-open {
-  overflow: hidden;
 }
 
 @media (max-width: 680px) {
@@ -179,10 +178,6 @@ body.is-lightbox-open {
 
   .about-intro h1 {
     font-size: 42px;
-  }
-
-  .about-intro p {
-    font-size: 16px;
   }
 
   .media-carousel {
@@ -202,20 +197,25 @@ body.is-lightbox-open {
     display: none;
   }
 
-  .media-lightbox {
+  .media-target-lightbox {
     padding: 16px;
   }
 
-  .media-lightbox-image {
+  .media-target-frame,
+  .media-target-frame img {
     max-width: calc(100vw - 32px);
     max-height: calc(100vh - 84px);
+  }
+
+  .media-target-frame img {
     border-radius: 12px;
   }
 
-  .media-lightbox-close {
+  .media-target-close {
     top: 12px;
     right: 12px;
     width: 42px;
     height: 42px;
+    line-height: 38px;
   }
 }

@@ -65,12 +65,12 @@ function setupDragScroll(carousel) {
   let isDown = false;
   let startX = 0;
   let scrollLeft = 0;
-  let moved = false;
   let activeLink = null;
+  let justDragged = false;
 
   carousel.addEventListener('pointerdown', (event) => {
     isDown = true;
-    moved = false;
+    justDragged = false;
     activeLink = event.target.closest('[data-lightbox-image]');
     startX = event.clientX;
     scrollLeft = carousel.scrollLeft;
@@ -83,12 +83,24 @@ function setupDragScroll(carousel) {
     const delta = event.clientX - startX;
 
     if (Math.abs(delta) > 12) {
-      moved = true;
-      if (activeLink) activeLink.dataset.dragged = 'true';
+      justDragged = true;
     }
 
     carousel.scrollLeft = scrollLeft - delta;
   });
+
+  carousel.addEventListener('click', (event) => {
+    const clickedLightboxItem = event.target.closest('[data-lightbox-image]');
+
+    if (clickedLightboxItem && justDragged) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    window.setTimeout(() => {
+      justDragged = false;
+    }, 0);
+  }, true);
 
   function endDrag(event) {
     if (!isDown) return;
@@ -98,11 +110,7 @@ function setupDragScroll(carousel) {
       carousel.releasePointerCapture(event.pointerId);
     }
 
-    window.setTimeout(() => {
-      if (activeLink) activeLink.dataset.dragged = 'false';
-      activeLink = null;
-      moved = false;
-    }, 0);
+    activeLink = null;
   }
 
   carousel.addEventListener('pointerup', endDrag);
