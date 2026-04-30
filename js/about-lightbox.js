@@ -8,23 +8,18 @@ function initMediaLightbox() {
   lightbox.dataset.ready = 'true';
 
   const image = lightbox.querySelector('.media-lightbox-image');
-  const closeButton = lightbox.querySelector('.media-lightbox-close');
-  let pointerStartX = 0;
-  let pointerStartY = 0;
-  let pointerMoved = false;
+  const closeButtons = lightbox.querySelectorAll('[data-lightbox-close]');
+  let lastActiveElement = null;
 
   function openLightbox(src, alt) {
-    if (!src) return;
+    if (!src || !image) return;
 
+    lastActiveElement = document.activeElement;
     image.src = src;
     image.alt = alt || 'Vergroot krantenartikel';
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-lightbox-open');
-
-    if (closeButton) {
-      closeButton.focus({ preventScroll: true });
-    }
   }
 
   function closeLightbox() {
@@ -32,62 +27,31 @@ function initMediaLightbox() {
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('is-lightbox-open');
     image.removeAttribute('src');
+
+    if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+      lastActiveElement.focus({ preventScroll: true });
+    }
   }
 
-  document.addEventListener('pointerdown', (event) => {
-    const card = event.target.closest('[data-lightbox-image]');
-
-    if (!card) return;
-
-    pointerStartX = event.clientX;
-    pointerStartY = event.clientY;
-    pointerMoved = false;
-  }, true);
-
-  document.addEventListener('pointermove', (event) => {
-    const card = event.target.closest('[data-lightbox-image]');
-
-    if (!card) return;
-
-    const deltaX = Math.abs(event.clientX - pointerStartX);
-    const deltaY = Math.abs(event.clientY - pointerStartY);
-
-    if (deltaX > 10 || deltaY > 10) {
-      pointerMoved = true;
-    }
-  }, true);
-
   document.addEventListener('click', (event) => {
-    const card = event.target.closest('[data-lightbox-image]');
+    const card = event.target.closest('.media-card[data-lightbox-src]');
 
-    if (!card) {
+    if (!card) return;
+
+    const carousel = card.closest('[data-drag-scroll]');
+
+    if (carousel && carousel.dataset.justDragged === 'true') {
       return;
     }
 
     event.preventDefault();
     event.stopPropagation();
 
-    if (pointerMoved || card.dataset.dragged === 'true') {
-      card.dataset.dragged = 'false';
-      pointerMoved = false;
-      return;
-    }
+    openLightbox(card.dataset.lightboxSrc, card.dataset.lightboxAlt || card.getAttribute('aria-label'));
+  });
 
-    const img = card.querySelector('img');
-    const src = card.dataset.lightboxSrc || card.getAttribute('href') || (img ? img.src : '');
-    const alt = img ? img.alt : card.getAttribute('aria-label');
-
-    openLightbox(src, alt);
-  }, true);
-
-  if (closeButton) {
-    closeButton.addEventListener('click', closeLightbox);
-  }
-
-  lightbox.addEventListener('click', (event) => {
-    if (event.target === lightbox) {
-      closeLightbox();
-    }
+  closeButtons.forEach((button) => {
+    button.addEventListener('click', closeLightbox);
   });
 
   document.addEventListener('keydown', (event) => {

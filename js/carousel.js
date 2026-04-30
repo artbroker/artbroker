@@ -20,7 +20,7 @@ function setupInfiniteCarousel(carousel) {
   });
 
   let paused = false;
-  let speed = 0.22;
+  const speed = 0.22;
 
   const getLoopWidth = () => carousel.scrollWidth / 2;
 
@@ -60,18 +60,23 @@ function setupDragScroll(carousel) {
     return;
   }
 
+  const dragMode = carousel.dataset.dragScroll;
+  const isTouchLike = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  if (dragMode === 'touch' && !isTouchLike) {
+    return;
+  }
+
   carousel.dataset.dragReady = 'true';
 
   let isDown = false;
   let startX = 0;
   let scrollLeft = 0;
-  let activeLink = null;
   let justDragged = false;
 
   carousel.addEventListener('pointerdown', (event) => {
     isDown = true;
     justDragged = false;
-    activeLink = event.target.closest('[data-lightbox-image]');
     startX = event.clientX;
     scrollLeft = carousel.scrollLeft;
     carousel.setPointerCapture(event.pointerId);
@@ -84,23 +89,11 @@ function setupDragScroll(carousel) {
 
     if (Math.abs(delta) > 12) {
       justDragged = true;
+      carousel.dataset.justDragged = 'true';
     }
 
     carousel.scrollLeft = scrollLeft - delta;
   });
-
-  carousel.addEventListener('click', (event) => {
-    const clickedLightboxItem = event.target.closest('[data-lightbox-image]');
-
-    if (clickedLightboxItem && justDragged) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    window.setTimeout(() => {
-      justDragged = false;
-    }, 0);
-  }, true);
 
   function endDrag(event) {
     if (!isDown) return;
@@ -110,12 +103,17 @@ function setupDragScroll(carousel) {
       carousel.releasePointerCapture(event.pointerId);
     }
 
-    activeLink = null;
+    window.setTimeout(() => {
+      justDragged = false;
+      carousel.dataset.justDragged = 'false';
+    }, 120);
   }
 
   carousel.addEventListener('pointerup', endDrag);
   carousel.addEventListener('pointercancel', endDrag);
-  carousel.addEventListener('mouseleave', () => { isDown = false; });
+  carousel.addEventListener('mouseleave', () => {
+    isDown = false;
+  });
 }
 
 function initCarousels() {
@@ -144,8 +142,7 @@ function initCarousels() {
   });
 
   setupInfiniteCarousel(document.getElementById('artists-carousel'));
-
-  document.querySelectorAll('[data-drag-scroll="true"]').forEach(setupDragScroll);
+  document.querySelectorAll('[data-drag-scroll]').forEach(setupDragScroll);
 }
 
 window.addEventListener('DOMContentLoaded', initCarousels);
