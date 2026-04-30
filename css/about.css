@@ -25,6 +25,18 @@
   color: var(--ink);
 }
 
+.about-copy {
+  max-width: 860px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.about-copy p + p {
+  margin-top: 16px;
+}
+
 .media-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -180,6 +192,12 @@ body.is-lightbox-open {
 
   .about-intro h1 {
     font-size: 42px;
+  }
+
+  .about-copy {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.65;
   }
 
   .media-card {
