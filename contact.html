@@ -16,13 +16,50 @@
   <div data-partial="./partials/header.html"></div>
 
   <main class="contact-page">
-    <div class="container contact-page-shell">
-      <!-- Contactpagina content komt hier later. -->
-    </div>
+    <section class="container contact-page-shell">
+      <div class="contact-intro">
+        <div class="eyebrow">Contact</div>
+        <h1>Neem contact op met Artbroker International</h1>
+        <p>
+          Heeft u een vraag over een kunstwerk, taxatie, bemiddeling of het werk van Herman Brood?
+          Stuur ons een bericht. Wij nemen zo snel mogelijk contact met u op.
+        </p>
+      </div>
+
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <p class="hidden-field">
+          <label>Laat dit veld leeg: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Naam</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+
+          <label class="form-field">
+            <span>E-mailadres</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span>Bericht</span>
+          <textarea name="message" rows="8" required></textarea>
+        </label>
+
+        <button class="btn btn-gold" type="submit">Verstuur bericht</button>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
   </main>
 
   <div data-partial="./partials/footer.html"></div>
 
   <script src="./js/partials.js" defer></script>
+  <script src="./js/contact-form.js" defer></script>
 </body>
 </html>
