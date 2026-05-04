@@ -47,12 +47,9 @@
 
 .media-slide-viewport {
   position: relative;
-  min-height: 620px;
-  border-radius: 22px;
+  height: 620px;
   overflow: hidden;
-  border: 1px solid rgba(31, 37, 40, 0.11);
-  background: #fffdf8;
-  box-shadow: 0 18px 50px rgba(17, 23, 25, 0.12);
+  background: transparent;
   cursor: zoom-in;
 }
 
@@ -67,7 +64,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
   opacity: 0;
   visibility: hidden;
   transform: scale(0.985);
@@ -81,32 +77,21 @@
 }
 
 .media-slide img {
-  width: 100%;
-  height: 100%;
-  max-height: 572px;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   object-position: center;
   pointer-events: none;
   user-select: none;
-}
-
-.media-slide-hint {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  z-index: 3;
-  padding: 9px 14px;
-  border-radius: 999px;
-  color: #fff;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  box-shadow: 0 10px 24px rgba(17, 23, 25, 0.22);
-  pointer-events: none;
+  filter: drop-shadow(0 18px 34px rgba(17, 23, 25, 0.18));
 }
 
 .media-slide-btn {
+  position: relative;
+  z-index: 4;
   width: 54px;
   height: 54px;
   border-radius: 50%;
@@ -214,11 +199,7 @@ body.is-lightbox-open {
   }
 
   .media-slide-viewport {
-    min-height: 520px;
-  }
-
-  .media-slide img {
-    max-height: 472px;
+    height: 520px;
   }
 }
 
@@ -253,23 +234,7 @@ body.is-lightbox-open {
   }
 
   .media-slide-viewport {
-    min-height: 430px;
-    border-radius: 16px;
-  }
-
-  .media-slide {
-    padding: 14px;
-  }
-
-  .media-slide img {
-    max-height: 402px;
-  }
-
-  .media-slide-hint {
-    right: 10px;
-    bottom: 10px;
-    padding: 7px 10px;
-    font-size: 11px;
+    height: 430px;
   }
 
   .media-lightbox {
@@ -289,10 +254,6 @@ body.is-lightbox-open {
 
 @media (max-width: 430px) {
   .media-slide-viewport {
-    min-height: 360px;
-  }
-
-  .media-slide img {
-    max-height: 332px;
+    height: 360px;
   }
 }
