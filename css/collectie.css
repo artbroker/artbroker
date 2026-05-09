@@ -269,3 +269,49 @@
 .artist-panel[open] .artist-panel-content {
   opacity: 1;
 }
+
+.jump-to-top {
+  position: fixed;
+  right: clamp(18px, 3vw, 34px);
+  bottom: clamp(18px, 3vw, 34px);
+  z-index: 80;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(181, 138, 66, 0.38);
+  border-radius: 999px;
+  display: inline-grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  box-shadow: 0 18px 44px rgba(17, 23, 25, 0.18);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.jump-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.jump-to-top:hover,
+.jump-to-top:focus-visible {
+  box-shadow: 0 22px 52px rgba(17, 23, 25, 0.24);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+@media (max-width: 680px) {
+  .jump-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+}

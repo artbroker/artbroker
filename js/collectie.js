@@ -139,6 +139,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".collection-work-grid[data-bunny-folder]").forEach(loadGallery);
 
+  const jumpToTopButton = document.querySelector(".jump-to-top");
+
+  if (jumpToTopButton) {
+    const toggleJumpButton = () => {
+      jumpToTopButton.classList.toggle("is-visible", window.scrollY > 420);
+    };
+
+    jumpToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    toggleJumpButton();
+    window.addEventListener("scroll", toggleJumpButton, { passive: true });
+  }
+
   openPanelFromHash();
   window.addEventListener("hashchange", openPanelFromHash);
 });
