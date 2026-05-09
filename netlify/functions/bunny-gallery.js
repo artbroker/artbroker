@@ -58,11 +58,11 @@ exports.handler = async (event) => {
     });
 
     if (!response.ok) {
-      const text = await response.text();
+      await response.text();
       return {
         statusCode: response.status,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'Bunny API request failed.', details: text.slice(0, 500) })
+        body: JSON.stringify({ error: 'Bunny API request failed.' })
       };
     }
 
