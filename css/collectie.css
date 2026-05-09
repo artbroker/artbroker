@@ -238,3 +238,19 @@
     font-size: 12px;
   }
 }
+
+
+.collection-loading {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 22px;
+  border: 1px dashed rgba(181, 138, 66, 0.36);
+  border-radius: 16px;
+  color: var(--muted);
+  background: rgba(255, 253, 248, 0.72);
+}
+
+.collection-error {
+  color: #8f2f25;
+  border-color: rgba(143, 47, 37, 0.28);
+}
