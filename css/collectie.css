@@ -73,7 +73,7 @@
   line-height: 1.1;
   background: rgba(255, 253, 248, 0.86);
   border-bottom: 1px solid transparent;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.22s ease, color 0.22s ease;
 }
 
 .artist-panel summary::-webkit-details-marker {
@@ -98,7 +98,7 @@
   font-size: 22px;
   line-height: 1;
   transform: rotate(0deg);
-  transition: transform 0.2s ease;
+  transition: transform 0.28s ease;
 }
 
 .artist-panel[open] summary {
@@ -112,6 +112,7 @@
 .artist-panel-content {
   padding: clamp(24px, 4vw, 44px);
   background: rgba(255, 250, 241, 0.52);
+  overflow: hidden;
 }
 
 .artist-panel-content h2 {
@@ -253,4 +254,18 @@
 .collection-error {
   color: #8f2f25;
   border-color: rgba(143, 47, 37, 0.28);
+}
+
+
+.artist-panel.is-animating .artist-panel-content {
+  will-change: height, opacity;
+}
+
+.artist-panel:not([open]) .artist-panel-content {
+  height: 0;
+  opacity: 0;
+}
+
+.artist-panel[open] .artist-panel-content {
+  opacity: 1;
 }

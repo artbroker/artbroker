@@ -1,0 +1,119 @@
+.diensten-page {
+  min-height: calc(100vh - 94px);
+  background:
+    radial-gradient(circle at top right, rgba(181, 138, 66, 0.11), transparent 34%),
+    var(--bg);
+}
+
+.diensten-shell {
+  padding: 82px 0 92px;
+}
+
+.diensten-hero {
+  max-width: 980px;
+  margin: 0 auto 42px;
+  text-align: left;
+}
+
+.diensten-hero .eyebrow,
+.diensten-card .eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.diensten-hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(46px, 7vw, 82px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+  margin-bottom: 22px;
+}
+
+.diensten-hero p {
+  max-width: 860px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.diensten-content {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 22px;
+}
+
+.diensten-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.diensten-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 250, 241, 0.74);
+  box-shadow: 0 14px 42px rgba(17, 23, 25, 0.06);
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.diensten-card-featured {
+  background: rgba(255, 253, 248, 0.88);
+}
+
+.diensten-card h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 4vw, 50px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.diensten-card p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.75;
+  margin-top: 14px;
+}
+
+@media (min-width: 981px) {
+  .diensten-shell {
+    width: min(1180px, calc(100% - 80px));
+  }
+}
+
+@media (max-width: 780px) {
+  .diensten-shell {
+    padding: 52px 0 64px;
+  }
+
+  .diensten-hero {
+    margin-bottom: 30px;
+  }
+
+  .diensten-hero h1 {
+    font-size: 44px;
+  }
+
+  .diensten-hero p,
+  .diensten-card p {
+    font-size: 16px;
+  }
+
+  .diensten-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .diensten-card {
+    border-radius: 18px;
+  }
+}
