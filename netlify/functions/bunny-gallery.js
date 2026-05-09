@@ -3,6 +3,12 @@ const IMAGE_EXTENSIONS = new Set(['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif']);
 const ALLOWED_FOLDERS = new Set([
   'HermanBrood',
   'HansJochemBakker',
+  'Corneille',
+  'KarelAppel',
+  'Banksy',
+  'Picasso',
+  'AndyWarhol',
+  'Dali',
   'krantenartikelen'
 ]);
 
