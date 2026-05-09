@@ -105,10 +105,11 @@
   }
 
   .brand-logo {
-    height: 72px;
+    width: min(calc(100vw - 62px), 466px);
+    height: auto;
     max-height: 72px;
-    width: auto;
-    max-width: min(76vw, 390px);
+    max-width: none;
+    object-fit: initial;
   }
 
   .menu-toggle {
@@ -178,19 +179,19 @@
   }
 
   .brand-logo {
-    height: 68px;
-    max-height: 68px;
-    width: auto;
-    max-width: min(76vw, 330px);
+    width: min(calc(100vw - 56px), 450px);
+    height: auto;
+    max-height: 72px;
+    max-width: none;
   }
 }
 
 @media (max-width: 400px) {
   .brand-logo {
-    height: 62px;
-    max-height: 62px;
-    width: auto;
-    max-width: 74vw;
+    width: calc(100vw - 54px);
+    height: auto;
+    max-height: 66px;
+    max-width: none;
   }
 
   .menu-toggle {
