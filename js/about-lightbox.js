@@ -6,7 +6,6 @@ function initAboutMediaSlideshow() {
   const categoryRail = document.querySelector('.media-category-rail');
   const categoryTiles = Array.from(document.querySelectorAll('.media-category-tile[data-bunny-folder]'));
   const categoryScrollButtons = document.querySelectorAll('[data-category-scroll]');
-  const extraPanels = Array.from(document.querySelectorAll('.media-extra-panel[data-visible-folder]'));
   const lightbox = document.getElementById('media-lightbox');
   const lightboxImage = lightbox ? lightbox.querySelector('.media-lightbox-image') : null;
   const closeButtons = lightbox ? lightbox.querySelectorAll('[data-lightbox-close]') : [];
@@ -24,6 +23,20 @@ function initAboutMediaSlideshow() {
   let activeFolder = slideshow.dataset.bunnyFolder || categoryTiles[0]?.dataset.bunnyFolder || 'krantenartikelen';
   let loadRequestId = 0;
   const intervalMs = 4500;
+  const supplementalMediaByFolder = {
+    'krantenartikelen/Onze oude gallerij': [
+      {
+        type: 'tiktok',
+        title: 'Onze oude gallerij video 1',
+        url: 'https://www.tiktok.com/embed/v2/7349549427138252064'
+      },
+      {
+        type: 'tiktok',
+        title: 'Onze oude gallerij video 2',
+        url: 'https://www.tiktok.com/embed/v2/7139593020826979590'
+      }
+    ]
+  };
 
   function setLoading() {
     viewport.classList.add('is-loading');
@@ -39,24 +52,54 @@ function initAboutMediaSlideshow() {
     return item.title || item.name?.replace(/\.[^.]+$/, '') || `Archief afbeelding ${index + 1}`;
   }
 
-  function createSlides(images) {
+  function isVideoSlide(slide) {
+    return slide?.dataset.mediaType === 'tiktok';
+  }
+
+  function createImageSlide(item, index) {
+    const slide = document.createElement('div');
+    slide.className = `media-slide${index === 0 ? ' is-active' : ''}`;
+    slide.dataset.mediaType = 'image';
+    slide.dataset.lightboxSrc = item.url;
+    slide.dataset.lightboxAlt = normalAlt(item, index);
+
+    const img = document.createElement('img');
+    img.src = item.url;
+    img.alt = normalAlt(item, index);
+    img.loading = index === 0 ? 'eager' : 'lazy';
+    img.decoding = 'async';
+    img.draggable = false;
+
+    slide.appendChild(img);
+    return slide;
+  }
+
+  function createTikTokSlide(item, index) {
+    const slide = document.createElement('div');
+    slide.className = `media-slide media-slide-video${index === 0 ? ' is-active' : ''}`;
+    slide.dataset.mediaType = 'tiktok';
+
+    const iframe = document.createElement('iframe');
+    iframe.src = item.url;
+    iframe.title = item.title || `TikTok video ${index + 1}`;
+    iframe.loading = 'lazy';
+    iframe.allow = 'fullscreen; autoplay; encrypted-media; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+
+    slide.appendChild(iframe);
+    return slide;
+  }
+
+  function createSlides(mediaItems) {
     viewport.classList.remove('is-loading');
     viewport.innerHTML = '';
 
-    images.forEach((item, index) => {
-      const slide = document.createElement('div');
-      slide.className = `media-slide${index === 0 ? ' is-active' : ''}`;
-      slide.dataset.lightboxSrc = item.url;
-      slide.dataset.lightboxAlt = normalAlt(item, index);
+    mediaItems.forEach((item, index) => {
+      const slide = item.type === 'tiktok'
+        ? createTikTokSlide(item, index)
+        : createImageSlide(item, index);
 
-      const img = document.createElement('img');
-      img.src = item.url;
-      img.alt = normalAlt(item, index);
-      img.loading = index === 0 ? 'eager' : 'lazy';
-      img.decoding = 'async';
-      img.draggable = false;
-
-      slide.appendChild(img);
       viewport.appendChild(slide);
     });
 
@@ -72,6 +115,12 @@ function initAboutMediaSlideshow() {
     slides.forEach((slide, slideIndex) => {
       slide.classList.toggle('is-active', slideIndex === activeIndex);
     });
+
+    viewport.classList.toggle('has-active-video', isVideoSlide(slides[activeIndex]));
+
+    if (isVideoSlide(slides[activeIndex])) {
+      stopAutoPlay();
+    }
   }
 
   function nextSlide() {
@@ -84,7 +133,7 @@ function initAboutMediaSlideshow() {
 
   function startAutoPlay() {
     stopAutoPlay();
-    if (slides.length > 1) {
+    if (slides.length > 1 && !isVideoSlide(slides[activeIndex])) {
       timer = window.setInterval(nextSlide, intervalMs);
     }
   }
@@ -107,11 +156,6 @@ function initAboutMediaSlideshow() {
       }
     });
 
-    extraPanels.forEach((panel) => {
-      const isVisible = panel.dataset.visibleFolder === folder;
-      panel.classList.toggle('is-visible', isVisible);
-      panel.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
-    });
   }
 
   async function fetchBunnyImages(folder) {
@@ -128,7 +172,7 @@ function initAboutMediaSlideshow() {
   function openLightbox() {
     const activeSlide = slides[activeIndex];
 
-    if (!lightbox || !lightboxImage || !activeSlide) {
+    if (!lightbox || !lightboxImage || !activeSlide || isVideoSlide(activeSlide)) {
       return;
     }
 
@@ -242,12 +286,18 @@ function initAboutMediaSlideshow() {
         return;
       }
 
-      if (!Array.isArray(images) || images.length === 0) {
-        setError('Geen afbeeldingen gevonden in deze Bunny map.');
+      const supplementalMedia = supplementalMediaByFolder[folder] || [];
+      const mediaItems = [
+        ...(Array.isArray(images) ? images : []),
+        ...supplementalMedia
+      ];
+
+      if (mediaItems.length === 0) {
+        setError('Geen media gevonden in deze Bunny map.');
         return;
       }
 
-      createSlides(images);
+      createSlides(mediaItems);
       startAutoPlay();
     } catch (error) {
       console.error(error);
