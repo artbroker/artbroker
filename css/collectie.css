@@ -345,3 +345,41 @@
   outline: none;
 }
 
+
+
+/* Premium gold button refinement */
+.accordion-icon,
+.jump-to-top {
+  border: 1px solid var(--button-premium-border);
+  background: var(--button-premium-bg);
+  color: #fff;
+  text-shadow: var(--button-premium-text-shadow);
+  box-shadow: var(--button-premium-shadow);
+}
+
+.accordion-icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  font-size: 22px;
+  padding: 0 0 2px;
+  transition: transform 0.28s ease, box-shadow 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
+}
+
+.artist-panel summary:hover .accordion-icon,
+.artist-panel summary:focus-visible .accordion-icon,
+.artist-panel[open] summary:hover .accordion-icon,
+.artist-panel[open] summary:focus-visible .accordion-icon {
+  border-color: var(--button-premium-border-hover);
+  box-shadow: var(--button-premium-shadow-hover);
+}
+
+.jump-to-top {
+  box-shadow: var(--button-premium-shadow);
+}
+
+.jump-to-top:hover,
+.jump-to-top:focus-visible {
+  border-color: var(--button-premium-border-hover);
+  box-shadow: var(--button-premium-shadow-hover);
+}

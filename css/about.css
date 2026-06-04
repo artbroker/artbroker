@@ -667,3 +667,35 @@ body.is-lightbox-open {
   box-shadow: 0 20px 44px rgba(31, 37, 40, 0.14), 0 0 0 4px rgba(181, 138, 66, 0.06);
 }
 
+
+
+/* Premium gold button refinement */
+.media-category-nav,
+.media-slide-btn,
+.media-lightbox-close {
+  border-color: var(--button-premium-border);
+  background: var(--button-premium-bg);
+  color: #fff;
+  text-shadow: var(--button-premium-text-shadow);
+  box-shadow: var(--button-premium-shadow);
+}
+
+.media-category-nav {
+  padding: 0 0 2px;
+}
+
+.media-slide-btn,
+.media-lightbox-close {
+  padding: 0 0 2px;
+}
+
+.media-category-nav:hover,
+.media-category-nav:focus-visible,
+.media-slide-btn:hover,
+.media-slide-btn:focus-visible,
+.media-lightbox-close:hover,
+.media-lightbox-close:focus-visible {
+  border-color: var(--button-premium-border-hover);
+  box-shadow: var(--button-premium-shadow-hover);
+  color: #fff;
+}

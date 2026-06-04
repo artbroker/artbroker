@@ -222,3 +222,24 @@
   outline: none;
 }
 
+
+
+/* Premium gold button refinement */
+.btn {
+  border-color: var(--button-premium-border);
+}
+
+.btn::before {
+  background: var(--button-premium-bg);
+}
+
+.btn-gold {
+  box-shadow: var(--button-premium-shadow);
+  text-shadow: var(--button-premium-text-shadow);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  border-color: var(--button-premium-border-hover);
+  box-shadow: var(--button-premium-shadow-hover);
+}
