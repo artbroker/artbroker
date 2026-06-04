@@ -28,19 +28,25 @@ function initAboutMediaSlideshow() {
       {
         type: 'tiktok',
         title: 'Onze oude gallerij video 1',
-        url: 'https://www.tiktok.com/embed/v2/7349549427138252064'
+        videoId: '7349549427138252064',
+        cite: 'https://www.tiktok.com/@art.broker/video/7349549427138252064',
+        musicTitle: 'origineel geluid - Artbroker',
+        musicUrl: 'https://www.tiktok.com/music/origineel-geluid-7349549453970574113?refer=embed'
       },
       {
         type: 'tiktok',
         title: 'Onze oude gallerij video 2',
-        url: 'https://www.tiktok.com/embed/v2/7139593020826979590'
+        videoId: '7139593020826979590',
+        cite: 'https://www.tiktok.com/@art.broker/video/7139593020826979590',
+        musicTitle: 'Back In Black - AC/DC',
+        musicUrl: 'https://www.tiktok.com/music/Back-In-Black-6715195986316101634?refer=embed'
       }
     ]
   };
 
   function setLoading() {
     viewport.classList.add('is-loading');
-    viewport.innerHTML = '<div class="media-slide-loading">Afbeeldingen laden...</div>';
+    viewport.innerHTML = '<div class="media-slide-loading">Media laden...</div>';
   }
 
   function setError(message) {
@@ -79,16 +85,51 @@ function initAboutMediaSlideshow() {
     slide.className = `media-slide media-slide-video${index === 0 ? ' is-active' : ''}`;
     slide.dataset.mediaType = 'tiktok';
 
-    const iframe = document.createElement('iframe');
-    iframe.src = item.url;
-    iframe.title = item.title || `TikTok video ${index + 1}`;
-    iframe.loading = 'lazy';
-    iframe.allow = 'fullscreen; autoplay; encrypted-media; picture-in-picture';
-    iframe.allowFullscreen = true;
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    const blockquote = document.createElement('blockquote');
+    blockquote.className = 'tiktok-embed';
+    blockquote.cite = item.cite;
+    blockquote.dataset.videoId = item.videoId;
 
-    slide.appendChild(iframe);
+    const section = document.createElement('section');
+    const profileLink = document.createElement('a');
+    profileLink.target = '_blank';
+    profileLink.rel = 'noopener noreferrer';
+    profileLink.title = '@art.broker';
+    profileLink.href = 'https://www.tiktok.com/@art.broker?refer=embed';
+    profileLink.textContent = '@art.broker';
+
+    const caption = document.createElement('p');
+    const musicLink = document.createElement('a');
+    musicLink.target = '_blank';
+    musicLink.rel = 'noopener noreferrer';
+    musicLink.title = item.musicTitle;
+    musicLink.href = item.musicUrl;
+    musicLink.textContent = `♬ ${item.musicTitle}`;
+
+    section.appendChild(profileLink);
+    section.appendChild(caption);
+    section.appendChild(musicLink);
+    blockquote.appendChild(section);
+    slide.appendChild(blockquote);
     return slide;
+  }
+
+  function refreshTikTokEmbeds() {
+    if (!viewport.querySelector('.tiktok-embed')) {
+      return;
+    }
+
+    const existingScript = document.querySelector('script[data-about-tiktok-embed]');
+
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://www.tiktok.com/embed.js';
+    script.async = true;
+    script.dataset.aboutTiktokEmbed = 'true';
+    document.body.appendChild(script);
   }
 
   function createSlides(mediaItems) {
@@ -105,6 +146,7 @@ function initAboutMediaSlideshow() {
 
     slides = Array.from(viewport.querySelectorAll('.media-slide'));
     showSlide(0);
+    refreshTikTokEmbeds();
   }
 
   function showSlide(index) {
@@ -301,7 +343,7 @@ function initAboutMediaSlideshow() {
       startAutoPlay();
     } catch (error) {
       console.error(error);
-      setError('Afbeeldingen konden niet worden geladen.');
+      setError('Media kon niet worden geladen.');
     }
   }
 
