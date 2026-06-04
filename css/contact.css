@@ -1,8 +1,6 @@
 .contact-page {
   min-height: calc(100vh - 94px - 92px);
-  background:
-    linear-gradient(180deg, rgba(255, 250, 241, 0.96) 0%, rgba(247, 243, 234, 0) 118px),
-    var(--bg);
+  background: var(--bg);
   color: var(--ink);
   padding: 84px 0;
 }

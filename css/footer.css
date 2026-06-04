@@ -1,8 +1,7 @@
 .site-footer {
-  background: rgba(255, 250, 241, 0.94);
+  background: var(--bg);
   color: var(--ink);
   padding: 22px 0;
-  border-top: 1px solid var(--line);
 }
 
 .footer-simple {

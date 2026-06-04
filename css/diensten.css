@@ -1,7 +1,6 @@
 .diensten-page {
   min-height: calc(100vh - 94px);
   background:
-    linear-gradient(180deg, rgba(255, 250, 241, 0.96) 0%, rgba(247, 243, 234, 0) 118px),
     radial-gradient(circle at top right, rgba(181, 138, 66, 0.11), transparent 34%),
     var(--bg);
 }
