@@ -1,0 +1,251 @@
+/* Unified premium button system
+   Central source for all gold CTA and arrow controls.
+   Header hamburger is intentionally excluded so the mobile menu keeps its original size/style. */
+
+:root {
+  --premium-gold-1: #f3d58a;
+  --premium-gold-2: #d6a54d;
+  --premium-gold-3: #a7782e;
+  --premium-gold-4: #70501c;
+  --premium-edge: rgba(255, 235, 180, 0.9);
+  --premium-edge-strong: rgba(255, 246, 216, 0.98);
+  --premium-shadow:
+    0 20px 42px rgba(112, 80, 28, 0.34),
+    0 8px 22px rgba(17, 23, 25, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    inset 0 -10px 18px rgba(72, 48, 14, 0.24);
+  --premium-shadow-hover:
+    0 24px 54px rgba(112, 80, 28, 0.42),
+    0 12px 28px rgba(17, 23, 25, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    inset 0 -10px 18px rgba(72, 48, 14, 0.2);
+  --premium-bg:
+    radial-gradient(circle at 28% 12%, rgba(255, 255, 255, 0.42) 0 13%, transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 30%, rgba(255, 255, 255, 0) 48%),
+    linear-gradient(145deg, var(--premium-gold-1) 0%, var(--premium-gold-2) 42%, var(--premium-gold-3) 68%, var(--premium-gold-4) 100%);
+}
+
+.btn-gold,
+.hero-slide-btn,
+.carousel-btn,
+.media-category-nav,
+.media-slide-btn,
+.media-lightbox-close,
+.accordion-icon,
+.jump-to-top {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--premium-edge);
+  background: var(--premium-bg);
+  color: #fff;
+  box-shadow: var(--premium-shadow);
+  text-shadow: 0 1px 1px rgba(50, 34, 8, 0.48), 0 0 16px rgba(255, 238, 193, 0.18);
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    border-color 0.16s ease,
+    filter 0.16s ease;
+}
+
+.btn-gold::before,
+.hero-slide-btn::before,
+.carousel-btn::before,
+.media-category-nav::before,
+.media-slide-btn::before,
+.media-lightbox-close::before,
+.accordion-icon::before,
+.jump-to-top::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid rgba(255, 244, 211, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 48%),
+    radial-gradient(circle at 50% 115%, rgba(68, 45, 10, 0.32), transparent 48%);
+}
+
+.btn-gold:hover,
+.btn-gold:focus-visible,
+.hero-slide-btn:hover,
+.hero-slide-btn:focus-visible,
+.carousel-btn:hover,
+.carousel-btn:focus-visible,
+.media-category-nav:hover,
+.media-category-nav:focus-visible,
+.media-slide-btn:hover,
+.media-slide-btn:focus-visible,
+.media-lightbox-close:hover,
+.media-lightbox-close:focus-visible,
+.artist-panel summary:hover .accordion-icon,
+.artist-panel summary:focus-visible .accordion-icon,
+.jump-to-top:hover,
+.jump-to-top:focus-visible {
+  border-color: var(--premium-edge-strong);
+  box-shadow: var(--premium-shadow-hover);
+  filter: saturate(1.08) brightness(1.04);
+  outline: none;
+}
+
+/* CTA capsule */
+.btn-gold {
+  min-height: 54px;
+  padding: 0 32px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.095em;
+  text-transform: uppercase;
+}
+
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 8px;
+  height: 1px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  pointer-events: none;
+}
+
+.btn-gold:hover,
+.btn-gold:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* Round controls */
+.hero-slide-btn,
+.carousel-btn,
+.media-category-nav,
+.media-slide-btn,
+.media-lightbox-close,
+.accordion-icon,
+.jump-to-top {
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.hero-slide-btn,
+.carousel-btn,
+.media-slide-btn {
+  width: 58px;
+  height: 58px;
+  font-size: 32px;
+  padding: 0 0 3px;
+}
+
+.media-category-nav {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  padding: 0 0 3px;
+}
+
+.media-lightbox-close {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  padding: 0 0 2px;
+}
+
+.jump-to-top {
+  width: 54px;
+  height: 54px;
+  font-size: 25px;
+  padding: 0 0 2px;
+}
+
+/* Accordion: the button itself never rotates. Only the arrow glyph rotates both ways, fast. */
+.accordion-icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  font-size: 0;
+  padding: 0;
+  transform: none !important;
+}
+
+.artist-panel[open] .accordion-icon {
+  transform: none !important;
+}
+
+.accordion-icon::after {
+  content: "⌄";
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: 22px;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 0.14s ease-in-out;
+  will-change: transform;
+}
+
+.artist-panel[open] .accordion-icon::after {
+  transform: rotate(180deg);
+}
+
+.artist-panel.is-closing .accordion-icon::after {
+  transform: rotate(0deg);
+}
+
+/* Keep absolute centered controls centered while hovering. */
+.hero-slide-btn:hover,
+.hero-slide-btn:focus-visible,
+.carousel-btn:hover,
+.carousel-btn:focus-visible {
+  transform: translateY(calc(-50% - 2px));
+}
+
+.media-category-nav:hover,
+.media-category-nav:focus-visible,
+.media-slide-btn:hover,
+.media-slide-btn:focus-visible,
+.media-lightbox-close:hover,
+.media-lightbox-close:focus-visible,
+.jump-to-top:hover,
+.jump-to-top:focus-visible {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 680px) {
+  .hero-slide-btn,
+  .carousel-btn,
+  .media-slide-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 26px;
+  }
+
+  .media-category-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+
+  .accordion-icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .accordion-icon::after {
+    font-size: 20px;
+  }
+
+  .jump-to-top {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+}

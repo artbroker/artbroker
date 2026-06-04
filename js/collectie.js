@@ -1,6 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
   const panels = Array.from(document.querySelectorAll(".artist-panel"));
 
+  const setToggleClosingState = (panel) => {
+    const summary = panel.querySelector('summary');
+    if (!summary) {
+      return;
+    }
+
+    summary.addEventListener('click', () => {
+      if (panel.open) {
+        panel.classList.add('is-closing');
+        window.setTimeout(() => {
+          panel.classList.remove('is-closing');
+        }, 430);
+      }
+    });
+  };
+
+  panels.forEach(setToggleClosingState);
+
+
   const animatePanel = (panel, shouldOpen, instant = false) => {
     const content = panel.querySelector(".artist-panel-content");
     if (!content) {
