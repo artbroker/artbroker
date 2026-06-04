@@ -87,12 +87,13 @@
 .hero::before {
   content: "";
   z-index: 2;
-  height: 92px;
+  height: 86px;
   bottom: auto;
   background: linear-gradient(
     180deg,
-    rgba(255, 250, 241, 0.82) 0%,
-    rgba(255, 250, 241, 0.32) 38%,
+    rgba(255, 250, 241, 0.34) 0%,
+    rgba(255, 250, 241, 0.14) 28%,
+    rgba(17, 23, 25, 0.16) 66%,
     rgba(255, 250, 241, 0) 100%
   );
   pointer-events: none;
