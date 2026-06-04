@@ -9,7 +9,13 @@ const ALLOWED_FOLDERS = new Set([
   'Picasso',
   'AndyWarhol',
   'Dali',
-  'krantenartikelen'
+  'krantenartikelen',
+  'krantenartikelen/Afterparty 2010',
+  'krantenartikelen/Artbroker in atelier Herman Brood',
+  'krantenartikelen/Artbroker in Tokyo',
+  'krantenartikelen/Onze oude gallerij',
+  'krantenartikelen/Overige',
+  'krantenartikelen/Paradiso 2011'
 ]);
 
 function naturalSort(a, b) {
@@ -21,6 +27,11 @@ function publicUrlFor(pullzoneUrl, folder, fileName) {
   const cleanFolder = folder.split('/').map(encodeURIComponent).join('/');
   const cleanFile = encodeURIComponent(fileName);
   return `${cleanPullzone}/${cleanFolder}/${cleanFile}`;
+}
+
+function storagePathFor(storageZone, folder) {
+  const cleanFolder = folder.split('/').map(encodeURIComponent).join('/');
+  return `${encodeURIComponent(storageZone)}/${cleanFolder}`;
 }
 
 exports.handler = async (event) => {
@@ -48,7 +59,7 @@ exports.handler = async (event) => {
       };
     }
 
-    const storageUrl = `${endpoint}/${encodeURIComponent(storageZone)}/${encodeURIComponent(folder)}/`;
+    const storageUrl = `${endpoint}/${storagePathFor(storageZone, folder)}/`;
     const response = await fetch(storageUrl, {
       method: 'GET',
       headers: {
