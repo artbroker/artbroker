@@ -6,6 +6,7 @@ function initAboutMediaSlideshow() {
   const categoryRail = document.querySelector('.media-category-rail');
   const categoryTiles = Array.from(document.querySelectorAll('.media-category-tile[data-bunny-folder]'));
   const categoryScrollButtons = document.querySelectorAll('[data-category-scroll]');
+  const extraPanels = Array.from(document.querySelectorAll('.media-extra-panel[data-visible-folder]'));
   const lightbox = document.getElementById('media-lightbox');
   const lightboxImage = lightbox ? lightbox.querySelector('.media-lightbox-image') : null;
   const closeButtons = lightbox ? lightbox.querySelectorAll('[data-lightbox-close]') : [];
@@ -104,6 +105,12 @@ function initAboutMediaSlideshow() {
       if (isActive) {
         tile.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
+    });
+
+    extraPanels.forEach((panel) => {
+      const isVisible = panel.dataset.visibleFolder === folder;
+      panel.classList.toggle('is-visible', isVisible);
+      panel.setAttribute('aria-hidden', isVisible ? 'false' : 'true');
     });
   }
 
