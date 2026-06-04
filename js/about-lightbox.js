@@ -23,43 +23,25 @@ function initAboutMediaSlideshow() {
   let activeFolder = slideshow.dataset.bunnyFolder || categoryTiles[0]?.dataset.bunnyFolder || 'krantenartikelen';
   let loadRequestId = 0;
   const intervalMs = 4500;
-  const supplementalMediaByFolder = {
-    'krantenartikelen/Onze oude gallerij': [
-      {
-        type: 'tiktok',
-        title: 'Onze oude gallerij video 1',
-        videoId: '7349549427138252064',
-        cite: 'https://www.tiktok.com/@art.broker/video/7349549427138252064',
-        musicTitle: 'origineel geluid - Artbroker',
-        musicUrl: 'https://www.tiktok.com/music/origineel-geluid-7349549453970574113?refer=embed'
-      },
-      {
-        type: 'tiktok',
-        title: 'Onze oude gallerij video 2',
-        videoId: '7139593020826979590',
-        cite: 'https://www.tiktok.com/@art.broker/video/7139593020826979590',
-        musicTitle: 'Back In Black - AC/DC',
-        musicUrl: 'https://www.tiktok.com/music/Back-In-Black-6715195986316101634?refer=embed'
-      }
-    ]
-  };
 
   function setLoading() {
     viewport.classList.add('is-loading');
+    viewport.classList.remove('has-active-video');
     viewport.innerHTML = '<div class="media-slide-loading">Media laden...</div>';
   }
 
   function setError(message) {
     viewport.classList.remove('is-loading');
+    viewport.classList.remove('has-active-video');
     viewport.innerHTML = `<div class="media-slide-error">${message}</div>`;
   }
 
   function normalAlt(item, index) {
-    return item.title || item.name?.replace(/\.[^.]+$/, '') || `Archief afbeelding ${index + 1}`;
+    return item.title || item.name?.replace(/\.[^.]+$/, '') || `Archief media ${index + 1}`;
   }
 
   function isVideoSlide(slide) {
-    return slide?.dataset.mediaType === 'tiktok';
+    return slide?.dataset.mediaType === 'video';
   }
 
   function createImageSlide(item, index) {
@@ -80,56 +62,22 @@ function initAboutMediaSlideshow() {
     return slide;
   }
 
-  function createTikTokSlide(item, index) {
+  function createVideoSlide(item, index) {
     const slide = document.createElement('div');
     slide.className = `media-slide media-slide-video${index === 0 ? ' is-active' : ''}`;
-    slide.dataset.mediaType = 'tiktok';
+    slide.dataset.mediaType = 'video';
 
-    const blockquote = document.createElement('blockquote');
-    blockquote.className = 'tiktok-embed';
-    blockquote.cite = item.cite;
-    blockquote.dataset.videoId = item.videoId;
+    const video = document.createElement('video');
+    video.src = item.url;
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    video.title = normalAlt(item, index);
 
-    const section = document.createElement('section');
-    const profileLink = document.createElement('a');
-    profileLink.target = '_blank';
-    profileLink.rel = 'noopener noreferrer';
-    profileLink.title = '@art.broker';
-    profileLink.href = 'https://www.tiktok.com/@art.broker?refer=embed';
-    profileLink.textContent = '@art.broker';
+    video.addEventListener('play', stopAutoPlay);
 
-    const caption = document.createElement('p');
-    const musicLink = document.createElement('a');
-    musicLink.target = '_blank';
-    musicLink.rel = 'noopener noreferrer';
-    musicLink.title = item.musicTitle;
-    musicLink.href = item.musicUrl;
-    musicLink.textContent = `♬ ${item.musicTitle}`;
-
-    section.appendChild(profileLink);
-    section.appendChild(caption);
-    section.appendChild(musicLink);
-    blockquote.appendChild(section);
-    slide.appendChild(blockquote);
+    slide.appendChild(video);
     return slide;
-  }
-
-  function refreshTikTokEmbeds() {
-    if (!viewport.querySelector('.tiktok-embed')) {
-      return;
-    }
-
-    const existingScript = document.querySelector('script[data-about-tiktok-embed]');
-
-    if (existingScript) {
-      existingScript.remove();
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://www.tiktok.com/embed.js';
-    script.async = true;
-    script.dataset.aboutTiktokEmbed = 'true';
-    document.body.appendChild(script);
   }
 
   function createSlides(mediaItems) {
@@ -137,8 +85,8 @@ function initAboutMediaSlideshow() {
     viewport.innerHTML = '';
 
     mediaItems.forEach((item, index) => {
-      const slide = item.type === 'tiktok'
-        ? createTikTokSlide(item, index)
+      const slide = item.type === 'video'
+        ? createVideoSlide(item, index)
         : createImageSlide(item, index);
 
       viewport.appendChild(slide);
@@ -146,7 +94,6 @@ function initAboutMediaSlideshow() {
 
     slides = Array.from(viewport.querySelectorAll('.media-slide'));
     showSlide(0);
-    refreshTikTokEmbeds();
   }
 
   function showSlide(index) {
@@ -155,7 +102,14 @@ function initAboutMediaSlideshow() {
     activeIndex = (index + slides.length) % slides.length;
 
     slides.forEach((slide, slideIndex) => {
-      slide.classList.toggle('is-active', slideIndex === activeIndex);
+      const video = slide.querySelector('video');
+      const isActive = slideIndex === activeIndex;
+
+      slide.classList.toggle('is-active', isActive);
+
+      if (!isActive && video) {
+        video.pause();
+      }
     });
 
     viewport.classList.toggle('has-active-video', isVideoSlide(slides[activeIndex]));
@@ -197,18 +151,17 @@ function initAboutMediaSlideshow() {
         tile.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
     });
-
   }
 
-  async function fetchBunnyImages(folder) {
+  async function fetchBunnyMedia(folder) {
     const response = await fetch(`/.netlify/functions/bunny-gallery?folder=${encodeURIComponent(folder)}`);
-    const images = await response.json();
+    const media = await response.json();
 
     if (!response.ok) {
-      throw new Error(images.error || 'Bunny map kon niet worden geladen.');
+      throw new Error(media.error || 'Bunny map kon niet worden geladen.');
     }
 
-    return images;
+    return media;
   }
 
   function openLightbox() {
@@ -322,19 +275,13 @@ function initAboutMediaSlideshow() {
     setLoading();
 
     try {
-      const images = await fetchBunnyImages(folder);
+      const mediaItems = await fetchBunnyMedia(folder);
 
       if (requestId !== loadRequestId) {
         return;
       }
 
-      const supplementalMedia = supplementalMediaByFolder[folder] || [];
-      const mediaItems = [
-        ...(Array.isArray(images) ? images : []),
-        ...supplementalMedia
-      ];
-
-      if (mediaItems.length === 0) {
+      if (!Array.isArray(mediaItems) || mediaItems.length === 0) {
         setError('Geen media gevonden in deze Bunny map.');
         return;
       }
@@ -397,8 +344,8 @@ function initAboutMediaSlideshow() {
     }
 
     try {
-      const images = await fetchBunnyImages(tile.dataset.bunnyFolder);
-      const firstImage = Array.isArray(images) ? images[0] : null;
+      const mediaItems = await fetchBunnyMedia(tile.dataset.bunnyFolder);
+      const firstImage = Array.isArray(mediaItems) ? mediaItems.find((item) => item.type !== 'video') : null;
 
       if (firstImage?.url) {
         cover.style.backgroundImage = `url("${firstImage.url}")`;

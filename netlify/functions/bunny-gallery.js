@@ -1,4 +1,5 @@
 const IMAGE_EXTENSIONS = new Set(['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif']);
+const VIDEO_EXTENSIONS = new Set(['mp4', 'webm', 'mov', 'm4v']);
 
 const ALLOWED_FOLDERS = new Set([
   'HermanBrood',
@@ -78,14 +79,15 @@ exports.handler = async (event) => {
     }
 
     const files = await response.json();
-    const images = files
+    const media = files
       .filter((item) => !item.IsDirectory && item.ObjectName)
       .filter((item) => {
         const ext = item.ObjectName.split('.').pop()?.toLowerCase();
-        return IMAGE_EXTENSIONS.has(ext);
+        return IMAGE_EXTENSIONS.has(ext) || VIDEO_EXTENSIONS.has(ext);
       })
       .sort((a, b) => naturalSort(a.ObjectName, b.ObjectName))
       .map((item) => {
+        const ext = item.ObjectName.split('.').pop()?.toLowerCase();
         const nameWithoutExt = item.ObjectName.replace(/\.[^.]+$/, '');
         const title = nameWithoutExt
           .replace(/^imgi_\d+_/, '')
@@ -96,6 +98,7 @@ exports.handler = async (event) => {
         return {
           name: item.ObjectName,
           title,
+          type: VIDEO_EXTENSIONS.has(ext) ? 'video' : 'image',
           url: publicUrlFor(pullzoneUrl, folder, item.ObjectName),
           size: item.Length || item.Size || null,
           lastChanged: item.LastChanged || null
@@ -108,7 +111,7 @@ exports.handler = async (event) => {
         'Content-Type': 'application/json',
         'Cache-Control': 'public, max-age=300'
       },
-      body: JSON.stringify(images)
+      body: JSON.stringify(media)
     };
   } catch (error) {
     return {
