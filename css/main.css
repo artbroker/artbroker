@@ -45,6 +45,7 @@
 
 .hero-bg,
 .hero-bg span,
+.hero::before,
 .hero::after {
   position: absolute;
   inset: 0;
@@ -83,6 +84,20 @@
   pointer-events: none;
 }
 
+.hero::before {
+  content: "";
+  z-index: 2;
+  height: 92px;
+  bottom: auto;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 250, 241, 0.82) 0%,
+    rgba(255, 250, 241, 0.32) 38%,
+    rgba(255, 250, 241, 0) 100%
+  );
+  pointer-events: none;
+}
+
 @keyframes heroImageFade {
   0% { opacity: 0; }
   5% { opacity: 1; }
@@ -93,7 +108,7 @@
 
 .hero-shell {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   padding: 88px clamp(42px, 5vw, 90px) 76px;
   overflow: hidden;

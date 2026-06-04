@@ -2,9 +2,24 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 250, 241, 0.94);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--line);
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.98), rgba(255, 250, 241, 0.91));
+  backdrop-filter: blur(20px) saturate(1.08);
+  border-bottom: 1px solid rgba(181, 138, 66, 0.12);
+  box-shadow: 0 10px 34px rgba(17, 23, 25, 0.035);
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -34px;
+  height: 34px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 250, 241, 0.72), rgba(255, 250, 241, 0));
 }
 
 .site-header .container.nav {
@@ -15,6 +30,7 @@
 
 .nav {
   position: relative;
+  z-index: 2;
   min-height: 94px;
   display: grid;
   grid-template-columns: auto 1fr;
