@@ -25,6 +25,16 @@
     linear-gradient(145deg, var(--premium-gold-1) 0%, var(--premium-gold-2) 42%, var(--premium-gold-3) 68%, var(--premium-gold-4) 100%);
 }
 
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .btn-gold,
 .hero-slide-btn,
 .carousel-btn,
@@ -207,6 +217,7 @@
 .hero-slide-btn {
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   pointer-events: auto;
 }
 
@@ -228,6 +239,7 @@
   position: absolute;
   top: 50%;
   z-index: 8;
+  transform: translateY(-50%);
 }
 
 .carousel-btn.prev {
@@ -242,7 +254,7 @@
 .hero-slide-btn:focus-visible,
 .carousel-btn:hover,
 .carousel-btn:focus-visible {
-  transform: translateY(calc(-50% - 2px));
+  transform: translateY(-50%);
 }
 
 .media-category-nav:hover,
