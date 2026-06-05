@@ -115,7 +115,6 @@
 .collectie-intro h1,
 .about-intro h1,
 .artist-card span,
-.media-category-title,
 .collection-work-card figcaption {
   color: #7d5a22;
   background: var(--premium-title-fill-light);
@@ -151,7 +150,6 @@
   .collectie-intro h1,
   .about-intro h1,
   .artist-card span,
-  .media-category-title,
   .collection-work-card figcaption,
   .hero h1,
   .hero-side .section-title {
