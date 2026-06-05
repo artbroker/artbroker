@@ -56,6 +56,7 @@ function initAboutMediaSlideshow() {
     img.alt = normalAlt(item, index);
     img.loading = index === 0 ? 'eager' : 'lazy';
     img.decoding = 'async';
+    img.fetchPriority = index === 0 ? 'high' : 'low';
     img.draggable = false;
 
     slide.appendChild(img);

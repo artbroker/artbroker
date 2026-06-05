@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
       img.alt = title;
       img.loading = "lazy";
       img.decoding = "async";
+      img.fetchPriority = "low";
 
       const caption = document.createElement("figcaption");
       caption.textContent = title;
