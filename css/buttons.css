@@ -330,35 +330,38 @@
 /* Final premium button polish */
 .btn-gold {
   background:
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.38) 0 16%, transparent 38%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 32%, rgba(255, 255, 255, 0) 52%),
-    linear-gradient(145deg, #efd085 0%, #d3a24a 44%, #a4742b 70%, #6f501c 100%);
+    radial-gradient(ellipse at 50% 5%, rgba(255, 255, 255, 0.44) 0%, rgba(255, 255, 255, 0.22) 22%, transparent 52%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.06) 35%, rgba(255, 255, 255, 0) 53%),
+    linear-gradient(145deg, #f2d58b 0%, #d2a24b 43%, #9b6f28 72%, #6c4e1c 100%);
+  border-color: rgba(255, 237, 190, 0.88);
+  box-shadow:
+    0 18px 42px rgba(112, 80, 28, 0.34),
+    0 8px 22px rgba(17, 23, 25, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.56),
+    inset 0 -9px 16px rgba(70, 46, 12, 0.24);
 }
 
 .btn-gold::before {
   inset: 2px;
   border-color: rgba(255, 246, 216, 0.18);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.20), transparent 44%),
-    radial-gradient(ellipse at 50% 104%, rgba(78, 52, 12, 0.30), transparent 50%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.19), transparent 42%),
+    radial-gradient(ellipse at 50% 108%, rgba(73, 47, 10, 0.32), transparent 52%);
 }
 
 .btn-gold::after {
-  left: 22%;
-  right: 22%;
+  left: 24%;
+  right: 24%;
   bottom: 8px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.46), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.48), transparent);
+  opacity: 0.78;
 }
 
 .hero-copy-panel .btn-gold {
-  min-height: 48px;
-  padding: 0 28px;
+  min-height: 47px;
+  padding: 0 30px;
   font-size: 13px;
-  box-shadow:
-    0 16px 36px rgba(112, 80, 28, 0.34),
-    0 8px 20px rgba(17, 23, 25, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.52),
-    inset 0 -8px 16px rgba(72, 48, 14, 0.22);
+  letter-spacing: 0.085em;
 }
 
