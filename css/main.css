@@ -954,15 +954,19 @@
   }
 
   .hero-actions {
-    position: static;
-    margin-top: 25px;
-    transform: none;
+    position: absolute;
+    left: 50%;
+    bottom: -24px;
+    margin-top: 0;
+    transform: translateX(-50%);
   }
 
   .hero-side .hero-copy-panel > .btn-gold {
-    position: static;
-    margin-top: 25px;
-    transform: none;
+    position: absolute;
+    left: 50%;
+    bottom: -24px;
+    margin-top: 0;
+    transform: translateX(-50%);
   }
 
   .btn-gold,
@@ -993,7 +997,7 @@
 
   .hero-copy-panel,
   .hero-side .hero-copy-panel {
-    padding: 24px 16px 26px;
+    padding: 24px 16px 48px;
   }
 
   .hero-copy-panel .eyebrow {

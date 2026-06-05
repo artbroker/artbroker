@@ -328,7 +328,14 @@
 }
 
 /* Final premium button polish */
-.btn-gold {
+.btn-gold,
+.hero-slide-btn,
+.carousel-btn,
+.media-category-nav,
+.media-slide-btn,
+.media-lightbox-close,
+.accordion-icon,
+.jump-to-top {
   background:
     radial-gradient(ellipse at 50% 5%, rgba(255, 255, 255, 0.44) 0%, rgba(255, 255, 255, 0.22) 22%, transparent 52%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.06) 35%, rgba(255, 255, 255, 0) 53%),
@@ -341,7 +348,14 @@
     inset 0 -9px 16px rgba(70, 46, 12, 0.24);
 }
 
-.btn-gold::before {
+.btn-gold::before,
+.hero-slide-btn::before,
+.carousel-btn::before,
+.media-category-nav::before,
+.media-slide-btn::before,
+.media-lightbox-close::before,
+.accordion-icon::before,
+.jump-to-top::before {
   inset: 2px;
   border-color: rgba(255, 246, 216, 0.18);
   background:
@@ -349,19 +363,34 @@
     radial-gradient(ellipse at 50% 108%, rgba(73, 47, 10, 0.32), transparent 52%);
 }
 
-.btn-gold::after {
+.btn-gold::after,
+.hero-slide-btn::after,
+.carousel-btn::after,
+.media-category-nav::after,
+.media-slide-btn::after,
+.media-lightbox-close::after,
+.jump-to-top::after {
+  content: "";
+  position: absolute;
   left: 24%;
   right: 24%;
   bottom: 8px;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.48), transparent);
   opacity: 0.78;
+  pointer-events: none;
 }
 
 .hero-copy-panel .btn-gold {
-  min-height: 47px;
-  padding: 0 30px;
+  min-height: 58px;
+  padding: 0 38px;
   font-size: 13px;
-  letter-spacing: 0.085em;
+  letter-spacing: 0.095em;
 }
 
+@media (max-width: 680px) {
+  .hero-copy-panel .btn-gold {
+    min-height: 49px;
+    padding-inline: 25px;
+  }
+}
