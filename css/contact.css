@@ -42,10 +42,6 @@
 
 .contact-form {
   padding: 30px;
-  border: 1px solid rgba(31, 37, 40, 0.12);
-  border-radius: var(--radius);
-  background: rgba(255, 250, 241, 0.82);
-  box-shadow: 0 20px 60px rgba(17, 23, 25, 0.08);
 }
 
 .form-grid {
@@ -73,7 +69,6 @@
 .form-field textarea {
   width: 100%;
   border: 1px solid rgba(31, 37, 40, 0.16);
-  border-radius: 16px;
   background: #fffdf8;
   color: var(--ink);
   font: inherit;
@@ -111,34 +106,6 @@
 
 .form-status.error {
   color: #8a2c1f;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 46px;
-  padding: 0 20px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  white-space: nowrap;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-gold {
-  color: #fff;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  box-shadow: 0 14px 30px rgba(181, 138, 66, 0.24);
 }
 
 @media (max-width: 980px) {
