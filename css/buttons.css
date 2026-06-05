@@ -326,3 +326,39 @@
     right: 6px;
   }
 }
+
+/* Final premium button polish */
+.btn-gold {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.38) 0 16%, transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 32%, rgba(255, 255, 255, 0) 52%),
+    linear-gradient(145deg, #efd085 0%, #d3a24a 44%, #a4742b 70%, #6f501c 100%);
+}
+
+.btn-gold::before {
+  inset: 2px;
+  border-color: rgba(255, 246, 216, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.20), transparent 44%),
+    radial-gradient(ellipse at 50% 104%, rgba(78, 52, 12, 0.30), transparent 50%);
+}
+
+.btn-gold::after {
+  left: 22%;
+  right: 22%;
+  bottom: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.46), transparent);
+}
+
+.hero-copy-panel .btn-gold {
+  min-height: 48px;
+  padding: 0 28px;
+  font-size: 13px;
+  box-shadow:
+    0 16px 36px rgba(112, 80, 28, 0.34),
+    0 8px 20px rgba(17, 23, 25, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.52),
+    inset 0 -8px 16px rgba(72, 48, 14, 0.22);
+}
+
