@@ -1,0 +1,286 @@
+:root {
+  --premium-radius: 14px;
+  --premium-radius-sm: 12px;
+  --premium-card-bg:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 229, 162, 0.2), transparent 35%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.96), rgba(241, 231, 211, 0.82));
+  --premium-card-border: rgba(209, 160, 74, 0.58);
+  --premium-card-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.72) inset,
+    -8px 0 18px rgba(255, 255, 255, 0.3),
+    10px 0 24px rgba(17, 23, 25, 0.12),
+    0 24px 58px rgba(17, 23, 25, 0.14);
+  --premium-card-shadow-hover:
+    0 2px 0 rgba(255, 255, 255, 0.8) inset,
+    -10px 0 22px rgba(255, 255, 255, 0.36),
+    12px 0 30px rgba(17, 23, 25, 0.14),
+    0 30px 68px rgba(17, 23, 25, 0.18);
+  --premium-media-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.82) inset,
+    -8px 0 16px rgba(255, 255, 255, 0.22),
+    8px 0 18px rgba(17, 23, 25, 0.16),
+    0 18px 32px rgba(17, 23, 25, 0.18);
+  --premium-title-fill: linear-gradient(180deg, #fffaf0 0%, #ffe8b7 38%, #fff8ea 66%, #d0a454 100%);
+  --premium-title-fill-light: linear-gradient(180deg, #2d1e09 0%, #8b5f1f 42%, #5c3b10 68%, #241704 100%);
+}
+
+.diensten-card,
+.contact-form,
+.artist-panel,
+.collection-loading,
+.media-category-tile,
+.media-slide-viewport,
+.media-lightbox-image {
+  border-radius: var(--premium-radius);
+  border-color: var(--premium-card-border);
+  background: var(--premium-card-bg);
+  box-shadow: var(--premium-card-shadow);
+}
+
+.diensten-card,
+.contact-form,
+.artist-panel,
+.collection-work-card,
+.collection-loading,
+.artist-card,
+.media-category-tile {
+  position: relative;
+  overflow: visible;
+  transform: rotateX(0.6deg) rotateY(-0.8deg) translateZ(0);
+  transform-origin: center bottom;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, filter 0.24s ease;
+}
+
+.diensten-card:hover,
+.contact-form:focus-within,
+.artist-panel:hover,
+.artist-panel:focus-within,
+.artist-panel[open],
+.collection-work-card:hover,
+.collection-work-card:focus-within,
+.collection-loading:hover,
+.artist-card:hover,
+.artist-card:focus-visible,
+.media-category-tile:hover,
+.media-category-tile:focus-visible,
+.media-category-tile.is-active {
+  border-color: rgba(209, 160, 74, 0.74);
+  box-shadow: var(--premium-card-shadow-hover);
+  transform: rotateX(0deg) rotateY(0deg) translateY(-2px);
+}
+
+.hero-copy-panel,
+.media-slide-viewport {
+  border-radius: var(--premium-radius);
+}
+
+.artist-panel::before,
+.collection-work-card::before,
+.artist-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: var(--premium-radius);
+  background: rgba(17, 23, 25, 0.16);
+  filter: blur(16px);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.artist-panel::before {
+  inset: 12px 18px -13px;
+  transform: skewY(-1.4deg);
+}
+
+.collection-work-card::before {
+  top: 12px;
+  left: 8%;
+  right: 3%;
+  height: calc(100% - 42px);
+  transform: translateY(12px) skewY(-2.5deg);
+}
+
+.artist-card::before {
+  top: 22px;
+  left: 50%;
+  width: 112px;
+  height: 112px;
+  transform: translateX(-42%) translateY(12px) skewY(-5deg);
+}
+
+.diensten-card h2,
+.artist-panel-content h2,
+.contact-intro h1,
+.diensten-hero h1,
+.collectie-intro h1,
+.about-intro h1,
+.artist-card span,
+.collection-work-card figcaption {
+  color: #7d5a22;
+  background: var(--premium-title-fill-light);
+  background-size: 100% 0.94em;
+  background-repeat: repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.2),
+    0 6px 15px rgba(17, 23, 25, 0.18),
+    0 0 12px rgba(217, 169, 71, 0.1);
+}
+
+.hero h1,
+.hero-side .section-title {
+  color: #fff0cf;
+  background: var(--premium-title-fill);
+  background-size: 100% 0.94em;
+  background-repeat: repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow:
+    0 2px 0 rgba(78, 45, 11, 0.26),
+    0 10px 26px rgba(17, 23, 25, 0.18),
+    0 0 24px rgba(217, 169, 71, 0.18);
+}
+
+@supports (-webkit-background-clip: text) {
+  .diensten-card h2,
+  .artist-panel-content h2,
+  .contact-intro h1,
+  .diensten-hero h1,
+  .collectie-intro h1,
+  .about-intro h1,
+  .artist-card span,
+  .collection-work-card figcaption,
+  .hero h1,
+  .hero-side .section-title {
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.btn,
+.btn-gold,
+.btn-ghost,
+.hero-slide-btn,
+.carousel-btn,
+.media-category-nav,
+.media-slide-btn,
+.media-lightbox-close,
+.accordion-icon,
+.jump-to-top {
+  border-radius: var(--premium-radius-sm);
+}
+
+.btn-gold,
+.hero-copy-panel .btn-gold {
+  min-height: 54px;
+  padding-inline: 34px;
+}
+
+.hero-slide-btn,
+.carousel-btn,
+.media-category-nav,
+.media-slide-btn,
+.media-lightbox-close,
+.accordion-icon,
+.jump-to-top {
+  border-radius: var(--premium-radius-sm);
+}
+
+.brand-logo,
+.artist-card img,
+.collection-work-card img,
+.media-slide img,
+.media-slide-video video,
+.media-lightbox-image,
+.media-category-tile,
+.media-category-cover {
+  border-radius: var(--premium-radius);
+}
+
+.artist-card img,
+.collection-work-card img,
+.media-slide img,
+.media-slide-video video,
+.media-lightbox-image {
+  border: 1px solid rgba(255, 250, 241, 0.88);
+  box-shadow: var(--premium-media-shadow);
+  filter: saturate(1.04) contrast(1.03);
+}
+
+.artist-card img,
+.collection-work-card img {
+  transform: rotateX(2deg) rotateY(-4deg) translateZ(0);
+  transform-origin: center bottom;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+}
+
+.artist-card:hover img,
+.artist-card:focus-visible img,
+.collection-work-card:hover img,
+.collection-work-card:focus-within img {
+  filter: saturate(1.08) contrast(1.05);
+  transform: rotateX(0deg) rotateY(0deg) translateY(-5px) translateZ(18px);
+}
+
+.media-slide img,
+.media-slide-video video {
+  transform: rotateX(1deg) rotateY(-1.6deg) translateZ(0);
+  transform-origin: center bottom;
+}
+
+.media-slide.is-active img,
+.media-slide.is-active video {
+  transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+}
+
+.media-slide.is-active:hover img,
+.media-slide.is-active:hover video {
+  filter: saturate(1.08) contrast(1.05);
+  transform: rotateX(0deg) rotateY(0deg) translateY(-4px) translateZ(16px);
+}
+
+.media-category-tile {
+  border-radius: var(--premium-radius);
+}
+
+.media-category-content {
+  border-radius: 0 0 var(--premium-radius) var(--premium-radius);
+}
+
+.form-field input,
+.form-field textarea {
+  border-radius: var(--premium-radius-sm);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.82) inset,
+    0 12px 24px rgba(17, 23, 25, 0.06);
+}
+
+body > .jump-to-top {
+  position: fixed;
+  right: clamp(18px, 3vw, 34px);
+  bottom: clamp(18px, 3vw, 34px);
+  left: auto;
+  top: auto;
+  z-index: 80;
+}
+
+@media (max-width: 680px) {
+  .diensten-card,
+  .contact-form,
+  .artist-panel,
+  .collection-loading,
+  .media-category-tile {
+    transform: none;
+  }
+
+  .btn-gold,
+  .hero-copy-panel .btn-gold {
+    min-height: 49px;
+    padding-inline: 25px;
+  }
+
+  body > .jump-to-top {
+    right: 16px;
+    bottom: max(24px, env(safe-area-inset-bottom));
+  }
+}

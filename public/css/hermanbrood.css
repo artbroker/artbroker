@@ -1,0 +1,77 @@
+.herman-page {
+  min-height: calc(100vh - 94px);
+  background:
+    radial-gradient(circle at top right, rgba(181, 138, 66, 0.11), transparent 34%),
+    var(--bg);
+}
+
+.herman-shell {
+  padding: 92px 0 100px;
+}
+
+.herman-content {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 58px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 250, 241, 0.78);
+  box-shadow: 0 20px 60px rgba(17, 23, 25, 0.08);
+}
+
+.herman-content .eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.herman-content h1 {
+  max-width: 760px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: var(--ink);
+}
+
+.herman-subtitle {
+  margin-top: 16px;
+  color: var(--gold-dark);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.herman-text {
+  margin-top: 34px;
+  display: grid;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.herman-text strong {
+  color: var(--ink);
+}
+
+@media (max-width: 680px) {
+  .herman-shell {
+    padding: 58px 0 68px;
+  }
+
+  .herman-content {
+    border-radius: 22px;
+  }
+
+  .herman-content h1 {
+    font-size: 42px;
+  }
+
+  .herman-text {
+    font-size: 16px;
+  }
+}
