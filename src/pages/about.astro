@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const head = "<meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Over ons - Artbroker International</title>\n  <meta name=\"description\" content=\"Ontdek de geschiedenis van Artbroker International in foto's, video's, krantenartikelen en media-aandacht door de jaren heen.\" />\n  <meta name=\"author\" content=\"Artbroker International\" />\n  <meta name=\"theme-color\" content=\"#fffaf1\" />\n  <link rel=\"canonical\" href=\"https://www.artbroker-int.nl/about.html\" />\n  <meta property=\"og:site_name\" content=\"Artbroker International\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta property=\"og:title\" content=\"Over ons - Artbroker International\" />\n  <meta property=\"og:description\" content=\"Ontdek de geschiedenis van Artbroker International in foto's, video's, krantenartikelen en media-aandacht door de jaren heen.\" />\n  <meta property=\"og:url\" content=\"https://www.artbroker-int.nl/about.html\" />\n  <meta property=\"og:image\" content=\"https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <meta name=\"twitter:title\" content=\"Over ons - Artbroker International\" />\n  <meta name=\"twitter:description\" content=\"Ontdek de geschiedenis van Artbroker International in foto's, video's, krantenartikelen en media-aandacht door de jaren heen.\" />\n  <meta name=\"twitter:image\" content=\"https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg\" />\n  <link rel=\"icon\" href=\"https://Artbroker.b-cdn.net/Logo%20e.d./favicon2.ico\" />\n  <link rel=\"preconnect\" href=\"https://Artbroker.b-cdn.net\" crossorigin />\n  <link rel=\"dns-prefetch\" href=\"//Artbroker.b-cdn.net\" />\n\n  <link rel=\"stylesheet\" href=\"./css/base.css\" />\n  <link rel=\"stylesheet\" href=\"./css/header.css\" />\n  <link rel=\"stylesheet\" href=\"./css/about.css\" />\n  <link rel=\"stylesheet\" href=\"./css/footer.css\" />\n  <link rel=\"stylesheet\" href=\"./css/buttons.css\" />\n  <link rel=\"stylesheet\" href=\"./css/premium.css\" />\n  <script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"AboutPage\",\n    \"@id\": \"https://www.artbroker-int.nl/about.html#webpage\",\n    \"url\": \"https://www.artbroker-int.nl/about.html\",\n    \"name\": \"Over ons - Artbroker International\",\n    \"description\": \"Ontdek de geschiedenis van Artbroker International in foto's, video's, krantenartikelen en media-aandacht door de jaren heen.\",\n    \"isPartOf\": {\n      \"@id\": \"https://www.artbroker-int.nl/#website\"\n    },\n    \"publisher\": {\n      \"@id\": \"https://www.artbroker-int.nl/#organization\"\n    },\n    \"about\": {\n      \"@id\": \"https://www.artbroker-int.nl/#organization\"\n    },\n    \"inLanguage\": \"nl-NL\"\n  }\n  </script>";
+const scripts = ["/js/about-lightbox.js"];
+---
+
+<BaseLayout head={head} scripts={scripts}>
+<main class="about-page" aria-label="Over Artbroker International">
+    <section class="container about-shell">
+      <div class="about-intro">
+        <div class="eyebrow">Over ons</div>
+        <h1>Onze geschiedenis in foto's, video's en krantenartikelen</h1>
+        <div class="about-copy">
+          <p>Sinds 1989 is Artbroker International een vertrouwd adres voor moderne en hedendaagse kunst. De galerie richt zich op originele werken, gelimiteerde edities, grafiek, popart en bijzondere objecten, met persoonlijke begeleiding en deskundig advies voor verzamelaars, kunstliefhebbers en bedrijven.</p>
+          <p>De geschiedenis van Artbroker International is nauw verbonden met Herman Brood. Als bevriende galeriehouder en Official Agent sinds 1989 beheert en vertegenwoordigt Artbroker International een belangrijke collectie van zijn werk.</p>
+          <p>Onze geschiedenis bestaat uit kunst, ontmoetingen, media-aandacht en bijzondere momenten. In het overzicht hieronder vindt u een selectie van foto's, video's en krantenartikelen uit de afgelopen decennia.</p>
+        </div>
+      </div>
+
+      <div class="media-category-header">
+        <span class="media-category-kicker">Archief categorieen</span>
+        <p>Kies een categorie om de bijbehorende media in de carousel te bekijken.</p>
+      </div>
+
+      <div class="media-category-section" aria-label="Archief categorieen">
+        <button class="media-category-nav prev" type="button" data-category-scroll="-1" aria-label="Vorige categorie">&#8249;</button>
+
+        <div class="media-category-rail" tabindex="0" aria-label="Kies een archiefcategorie">
+          <button class="media-category-tile is-active" type="button" data-bunny-folder="krantenartikelen" aria-pressed="true">
+            <span class="media-category-cover" aria-hidden="true"></span>
+            <span class="media-category-content">
+              <span class="media-category-title">Krantenartikelen</span>
+              <span class="media-category-meta">Losse artikelen uit de hoofdmap</span>
+            </span>
+          </button>
+
+          <button class="media-category-tile" type="button" data-bunny-folder="krantenartikelen/Afterparty 2010" aria-pressed="false">
+            <span class="media-category-cover" aria-hidden="true"></span>
+            <span class="media-category-content">
+              <span class="media-category-title">Afterparty 2010</span>
+              <span class="media-category-meta">Fotoarchief en media</span>
+            </span>
+          </button>
+
+          <button class="media-category-tile" type="button" data-bunny-folder="krantenartikelen/Artbroker in atelier Herman Brood" aria-pressed="false">
+            <span class="media-category-cover" aria-hidden="true"></span>
+            <span class="media-category-content">
+              <span class="media-category-title">Atelier Herman Brood</span>
+              <span class="media-category-meta">Artbroker in het atelier</span>
+            </span>
+          </button>
+
+          <button class="media-category-tile" type="button" data-bunny-folder="krantenartikelen/Artbroker in Tokyo" aria-pressed="false">
+            <span class="media-category-cover" aria-hidden="true"></span>
+            <span class="media-category-content">
+              <span class="media-category-title">Artbroker in Tokyo</span>
+              <span class="media-category-meta">Internationaal archief</span>
+            </span>
+          </button>
+
+          <button class="media-category-tile" type="button" data-bunny-folder="krantenartikelen/Onze oude gallerij" aria-pressed="false">
+            <span class="media-category-cover" aria-hidden="true"></span>
+            <span class="media-category-content">
+              <span class="media-category-title">Onze oude gallerij</span>
+              <span class="media-category-meta">Historie van de galerie</span>
+            </span>
+          </button>
+
+          <button class="media-category-tile" type="button" data-bunny-folder="krantenartikelen/Overige" aria-pressed="false">
+            <span class="media-category-cover" aria-hidden="true"></span>
+            <span class="media-category-content">
+              <span class="media-category-title">Overige</span>
+              <span class="media-category-meta">Aanvullend beeldarchief</span>
+            </span>
+          </button>
+
+          <button class="media-category-tile" type="button" data-bunny-folder="krantenartikelen/Paradiso 2011" aria-pressed="false">
+            <span class="media-category-cover" aria-hidden="true"></span>
+            <span class="media-category-content">
+              <span class="media-category-title">Paradiso 2011</span>
+              <span class="media-category-meta">Evenement en publiciteit</span>
+            </span>
+          </button>
+        </div>
+
+        <button class="media-category-nav next" type="button" data-category-scroll="1" aria-label="Volgende categorie">&#8250;</button>
+      </div>
+
+      <div class="media-slideshow" data-bunny-folder="krantenartikelen" aria-label="Geschiedenis in foto's, video's en krantenartikelen">
+        <button class="media-slide-btn prev" type="button" data-media-slide="prev" aria-label="Vorige media">‹</button>
+
+        <div class="media-slide-viewport" tabindex="0" aria-label="Foto dubbelklikken of Enter om te vergroten">
+          <div class="media-slide-loading">Media laden...</div>
+        </div>
+
+        <button class="media-slide-btn next" type="button" data-media-slide="next" aria-label="Volgende media">›</button>
+      </div>
+
+    </section>
+  </main>
+
+  <div class="media-lightbox" id="media-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Vergrote foto of krantenartikel">
+    <button class="media-lightbox-backdrop" type="button" data-lightbox-close aria-label="Sluiten"></button>
+    <div class="media-lightbox-frame">
+      <button class="media-lightbox-close" type="button" data-lightbox-close aria-label="Sluiten">×</button>
+      <img class="media-lightbox-image" alt="" />
+    </div>
+  </div>
+</BaseLayout>

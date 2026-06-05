@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const head = "<meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Artbroker International - Kunstspecialist sinds 1989</title>\n  <meta name=\"description\" content=\"Artbroker International is sinds 1989 specialist in moderne en hedendaagse kunst, taxaties, echtheidscertificaten en het werk van Herman Brood.\" />\n  <meta name=\"author\" content=\"Artbroker International\" />\n  <meta name=\"theme-color\" content=\"#fffaf1\" />\n  <link rel=\"canonical\" href=\"https://www.artbroker-int.nl/\" />\n  <meta property=\"og:site_name\" content=\"Artbroker International\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta property=\"og:title\" content=\"Artbroker International - Kunstspecialist sinds 1989\" />\n  <meta property=\"og:description\" content=\"Artbroker International is sinds 1989 specialist in moderne en hedendaagse kunst, taxaties, echtheidscertificaten en het werk van Herman Brood.\" />\n  <meta property=\"og:url\" content=\"https://www.artbroker-int.nl/\" />\n  <meta property=\"og:image\" content=\"https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <meta name=\"twitter:title\" content=\"Artbroker International - Kunstspecialist sinds 1989\" />\n  <meta name=\"twitter:description\" content=\"Artbroker International is sinds 1989 specialist in moderne en hedendaagse kunst, taxaties, echtheidscertificaten en het werk van Herman Brood.\" />\n  <meta name=\"twitter:image\" content=\"https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg\" />\n  <link rel=\"icon\" href=\"https://Artbroker.b-cdn.net/Logo%20e.d./favicon2.ico\" />\n  <link rel=\"preconnect\" href=\"https://Artbroker.b-cdn.net\" crossorigin />\n  <link rel=\"dns-prefetch\" href=\"//Artbroker.b-cdn.net\" />\n  <link rel=\"preload\" as=\"image\" href=\"https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg\" fetchpriority=\"high\" />\n\n  <link rel=\"stylesheet\" href=\"./css/base.css\" />\n  <link rel=\"stylesheet\" href=\"./css/header.css\" />\n  <link rel=\"stylesheet\" href=\"./css/main.css\" />\n  <link rel=\"stylesheet\" href=\"./css/footer.css\" />\n  <link rel=\"stylesheet\" href=\"./css/buttons.css\" />\n  <link rel=\"stylesheet\" href=\"./css/premium.css\" />\n  <script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@graph\": [\n      {\n        \"@type\": \"ArtGallery\",\n        \"@id\": \"https://www.artbroker-int.nl/#organization\",\n        \"name\": \"Artbroker International\",\n        \"url\": \"https://www.artbroker-int.nl/\",\n        \"logo\": \"https://Artbroker.b-cdn.net/Logo%20e.d./ArtbrokerLogo.png\",\n        \"image\": \"https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg\",\n        \"email\": \"info@artbroker-int.nl\",\n        \"foundingDate\": \"1989\",\n        \"description\": \"Artbroker International is specialist in moderne en hedendaagse kunst, popart, kunsttaxaties, echtheidscertificaten en het werk van Herman Brood.\",\n        \"knowsAbout\": [\n          \"moderne kunst\",\n          \"hedendaagse kunst\",\n          \"popart\",\n          \"kunsttaxatie\",\n          \"echtheidscertificaten\",\n          \"Herman Brood\"\n        ],\n        \"sameAs\": [\n          \"https://www.tiktok.com/@art.broker\"\n        ]\n      },\n      {\n        \"@type\": \"WebSite\",\n        \"@id\": \"https://www.artbroker-int.nl/#website\",\n        \"url\": \"https://www.artbroker-int.nl/\",\n        \"name\": \"Artbroker International\",\n        \"publisher\": {\n          \"@id\": \"https://www.artbroker-int.nl/#organization\"\n        },\n        \"inLanguage\": \"nl-NL\"\n      },\n      {\n        \"@type\": \"WebPage\",\n        \"@id\": \"https://www.artbroker-int.nl/#webpage\",\n        \"url\": \"https://www.artbroker-int.nl/\",\n        \"name\": \"Artbroker International - Kunstspecialist sinds 1989\",\n        \"description\": \"Artbroker International is sinds 1989 specialist in moderne en hedendaagse kunst, taxaties, echtheidscertificaten en het werk van Herman Brood.\",\n        \"isPartOf\": {\n          \"@id\": \"https://www.artbroker-int.nl/#website\"\n        },\n        \"about\": {\n          \"@id\": \"https://www.artbroker-int.nl/#organization\"\n        },\n        \"inLanguage\": \"nl-NL\"\n      }\n    ]\n  }\n  </script>";
+const scripts = ["/js/carousel.js","/js/mobile-hero.js"];
+---
+
+<BaseLayout head={head} scripts={scripts}>
+<main aria-label="Homepage van Artbroker International">
+    <section class="hero" id="over">
+      <div class="hero-bg" aria-hidden="true">
+        <span style="background-image: url('https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg');"></span>
+        <span style="background-image: url('https://Artbroker.b-cdn.net/Gallery/20240322_135854.jpg');"></span>
+        <span style="background-image: url('https://Artbroker.b-cdn.net/Gallery/20240322_135901.jpg');"></span>
+        <span style="background-image: url('https://Artbroker.b-cdn.net/Gallery/20240322_135841.jpg');"></span>
+      </div>
+      <div class="container hero-shell">
+        <div class="hero-layout">
+          <div class="hero-main">
+            <div class="hero-copy-panel">
+              <div class="eyebrow">Moderne & hedendaagse kunst</div>
+              <h1>Vertrouwde kunstspecialist sinds 1989</h1>
+              <p>Gespecialiseerd in moderne kunst, popart en het officiële werk van Herman Brood. Deskundig, persoonlijk en betrouwbaar.</p>
+
+              <div class="hero-actions">
+                <a class="btn btn-gold" href="./collectie.html">Bekijk collectie →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-side">
+            <div class="hero-copy-panel">
+              <div class="eyebrow">Over Artbroker International</div>
+              <h2 class="section-title">Kunst met kennis, passie en vertrouwen.</h2>
+              <p class="lead">Artbroker International is specialist in moderne, hedendaagse en populaire kunst, met een bijzondere focus op het werk van Herman Brood. Wij bieden originele kunstwerken, gelimiteerde edities, bemiddeling en betrouwbare taxaties.</p>
+              <p class="lead">De galerie voelt als een plek waar ervaring, collectiekennis en persoonlijke begeleiding samenkomen. Geen ruis, geen haast, wel aandacht voor herkomst, kwaliteit en verhaal.</p>
+              <a class="btn btn-gold" href="./about.html">Meer over ons →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-controls" aria-label="Hero tekst navigatie">
+          <button class="hero-slide-btn hero-slide-prev" type="button" aria-label="Vorige tekst">‹</button>
+          <button class="hero-slide-btn hero-slide-next" type="button" aria-label="Volgende tekst">›</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="artists" id="collectie">
+      <div class="container">
+        <div class="center-heading">
+          <div class="eyebrow">Ons aanbod</div>
+        </div>
+
+        <div class="carousel-wrap">
+          <button class="carousel-btn prev" data-carousel="artists" data-dir="-1">‹</button>
+
+          <div class="carousel artist-carousel" id="artists-carousel">
+            <a class="artist-card" href="./collectie.html#herman-brood">
+              <img src="https://Artbroker.b-cdn.net/HermanBrood/Herman%20Brood%20Scharp%20Dress.jpg" alt="Herman Brood" loading="lazy" decoding="async">
+              <span>Herman Brood</span>
+            </a>
+
+            <a class="artist-card" href="./collectie.html#hans-jochem-bakker">
+              <img src="https://Artbroker.b-cdn.net/HansJochemBakker/imgi_77_0002-1-dgd81.jpg" alt="Hans Jochem Bakker" loading="lazy" decoding="async">
+              <span>Hans Jochem Bakker</span>
+            </a>
+
+            <a class="artist-card" href="./collectie.html#corneille">
+              <img src="https://Artbroker.b-cdn.net/Corneille/IMG-20170321-WA0014.jpg" alt="Corneille" loading="lazy" decoding="async">
+              <span>Corneille</span>
+            </a>
+
+            <a class="artist-card" href="./collectie.html#karel-appel">
+              <img src="https://Artbroker.b-cdn.net/KarelAppel/imgi_15_0010-4-IMG-20170316-WA0007.jpg" alt="Karel Appel" loading="lazy" decoding="async">
+              <span>Karel Appel</span>
+            </a>
+
+            <a class="artist-card" href="./collectie.html#banksy">
+              <img src="https://Artbroker.b-cdn.net/Banksy/imgi_15_0008-1-banksy%20man%20and%20flowers%20met%20lijst.jpg" alt="Banksy" loading="lazy" decoding="async">
+              <span>Banksy</span>
+            </a>
+
+            <a class="artist-card" href="./collectie.html#picasso">
+              <img src="https://Artbroker.b-cdn.net/Picasso/imgi_15_0012-4-En%20Courant%20sur%20la%20Plage.jpg" alt="Picasso" loading="lazy" decoding="async">
+              <span>Picasso</span>
+            </a>
+
+            <a class="artist-card" href="./collectie.html#andy-warhol">
+              <img src="https://Artbroker.b-cdn.net/AndyWarhol/imgi_17_0007-4-andy-warhol-mao-zedong.jpg" alt="Andy Warhol" loading="lazy" decoding="async">
+              <span>Andy Warhol</span>
+            </a>
+
+
+            <a class="artist-card" href="./collectie.html#dali">
+              <img src="https://Artbroker.b-cdn.net/Dali/imgi_21_0014-1-Don%20Quichotte%20de%20la%20Mancha.jpg" alt="Salvador Dalí" loading="lazy" decoding="async">
+              <span>Salvador Dalí</span>
+            </a>
+          </div>
+
+          <button class="carousel-btn next" data-carousel="artists" data-dir="1">›</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <form name="contact" method="POST" action="/contact.html" data-netlify="true" netlify-honeypot="bot-field" hidden class="netlify-form-detection">
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="bot-field" />
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="text" name="subject" data-remove-prefix value="Nieuw bericht via Artbroker International" />
+    <textarea name="message"></textarea>
+  </form>
+</BaseLayout>

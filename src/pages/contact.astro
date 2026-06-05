@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const head = "<meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Contact - Artbroker International</title>\n  <meta name=\"robots\" content=\"noindex, nofollow, noarchive\" />\n  <meta name=\"description\" content=\"Neem contact op met Artbroker International voor vragen over kunstwerken, taxaties, bemiddeling of Herman Brood.\" />\n  <meta name=\"author\" content=\"Artbroker International\" />\n  <meta name=\"theme-color\" content=\"#fffaf1\" />\n  <link rel=\"canonical\" href=\"https://www.artbroker-int.nl/contact.html\" />\n  <meta property=\"og:site_name\" content=\"Artbroker International\" />\n  <meta property=\"og:type\" content=\"website\" />\n  <meta property=\"og:title\" content=\"Contact - Artbroker International\" />\n  <meta property=\"og:description\" content=\"Neem contact op met Artbroker International voor vragen over kunstwerken, taxaties, bemiddeling of Herman Brood.\" />\n  <meta property=\"og:url\" content=\"https://www.artbroker-int.nl/contact.html\" />\n  <meta property=\"og:image\" content=\"https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg\" />\n  <meta name=\"twitter:card\" content=\"summary_large_image\" />\n  <meta name=\"twitter:title\" content=\"Contact - Artbroker International\" />\n  <meta name=\"twitter:description\" content=\"Neem contact op met Artbroker International voor vragen over kunstwerken, taxaties, bemiddeling of Herman Brood.\" />\n  <meta name=\"twitter:image\" content=\"https://Artbroker.b-cdn.net/Gallery/20240322_135904.jpg\" />\n  <link rel=\"icon\" href=\"https://Artbroker.b-cdn.net/Logo%20e.d./favicon2.ico\" />\n  <link rel=\"preconnect\" href=\"https://Artbroker.b-cdn.net\" crossorigin />\n  <link rel=\"dns-prefetch\" href=\"//Artbroker.b-cdn.net\" />\n\n  <link rel=\"stylesheet\" href=\"./css/base.css\" />\n  <link rel=\"stylesheet\" href=\"./css/header.css\" />\n  <link rel=\"stylesheet\" href=\"./css/contact.css\" />\n  <link rel=\"stylesheet\" href=\"./css/footer.css\" />\n  <link rel=\"stylesheet\" href=\"./css/buttons.css\" />\n  <link rel=\"stylesheet\" href=\"./css/premium.css\" />\n  <script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"ContactPage\",\n    \"@id\": \"https://www.artbroker-int.nl/contact.html#webpage\",\n    \"url\": \"https://www.artbroker-int.nl/contact.html\",\n    \"name\": \"Contact - Artbroker International\",\n    \"description\": \"Neem contact op met Artbroker International voor vragen over kunstwerken, taxaties, bemiddeling of Herman Brood.\",\n    \"isPartOf\": {\n      \"@id\": \"https://www.artbroker-int.nl/#website\"\n    },\n    \"publisher\": {\n      \"@id\": \"https://www.artbroker-int.nl/#organization\"\n    },\n    \"inLanguage\": \"nl-NL\"\n  }\n  </script>";
+const scripts = ["/js/contact-form.js"];
+---
+
+<BaseLayout head={head} scripts={scripts}>
+<main class="contact-page" aria-label="Contactpagina van Artbroker International">
+    <section class="container contact-page-shell">
+      <div class="contact-intro">
+        <div class="eyebrow">Contact</div>
+        <h1>Neem contact op met Artbroker International</h1>
+        <p>
+          Heeft u een vraag over een kunstwerk, taxatie, bemiddeling of het werk van Herman Brood?
+          Stuur ons een bericht. Wij nemen zo snel mogelijk contact met u op.
+        </p>
+      </div>
+
+      <form class="contact-form" aria-label="Contactformulier Artbroker International" name="contact" method="POST" action="/contact.html" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <p class="hidden-field">
+          <label>Laat dit veld leeg: <input name="bot-field" /></label>
+        </p>
+
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Naam</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+
+          <label class="form-field">
+            <span>E-mailadres</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span>Onderwerp</span>
+          <input type="text" name="subject" data-remove-prefix autocomplete="off" required />
+        </label>
+
+        <label class="form-field">
+          <span>Bericht</span>
+          <textarea name="message" rows="8" required></textarea>
+        </label>
+
+        <button class="btn btn-gold" type="submit">Verstuur bericht</button>
+
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+import '../styles/tailwind.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  head: string;
+  scripts?: string[];
+}
+
+const { head, scripts = [] } = Astro.props;
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <Fragment set:html={head} />
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+
+    <script is:inline src="/js/site.js" defer></script>
+    {scripts.map((script) => <script is:inline src={script} defer></script>)}
+  </body>
+</html>
