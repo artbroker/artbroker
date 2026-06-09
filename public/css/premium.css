@@ -284,3 +284,32 @@ body > .jump-to-top {
     bottom: max(24px, env(safe-area-inset-bottom));
   }
 }
+
+
+/* About category rail safety override. Keeps mobile identical to desktop: one white title line only. */
+.about-page .media-category-rail .media-category-tile {
+  overflow: hidden !important;
+}
+
+.about-page .media-category-rail .media-category-content {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.about-page .media-category-rail .media-category-title {
+  display: block !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  color: #fff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+.about-page .media-category-rail .media-category-meta {
+  display: none !important;
+}

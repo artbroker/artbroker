@@ -153,6 +153,10 @@
   min-height: 66%;
   padding: 42px 18px 24px;
   background: linear-gradient(180deg, rgba(255, 250, 241, 0), rgba(31, 37, 40, 0.78));
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .media-category-title {
@@ -170,6 +174,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   overflow-wrap: normal;
+  word-break: normal;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -533,4 +538,29 @@ body.is-lightbox-open {
   .media-slide-viewport {
     height: 360px;
   }
+}
+
+
+/* Final guard: category rail tiles use one clipped white title line on every viewport. */
+.about-page .media-category-rail .media-category-tile .media-category-content {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.about-page .media-category-rail .media-category-tile .media-category-title {
+  display: block !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  color: #fff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+.about-page .media-category-rail .media-category-tile .media-category-meta {
+  display: none !important;
 }
